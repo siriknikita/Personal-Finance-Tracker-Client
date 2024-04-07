@@ -1,31 +1,37 @@
-import React, { useLayoutEffect, useState } from 'react'
-
-async function fetchData(url, property) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data[property];
-}
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import Dashboard from "./scenes/dashboard";
+import Login from "./scenes/login";
+import Signup from "./scenes/signup";
 
 function App() {
-    const [message, setMessage] = useState('');
-
-    useLayoutEffect(() => {
-        async function fetchMessage() {
-            const message = await fetchData('/api', 'message');
-            setMessage(message);
-        }
-        fetchMessage();
-    }, []);
+    const [user, setUser] = useState(null);
 
     return (
-        <div>
-            {(typeof (message) === "undefined") ? (
-                <p>Loading...</p>
-            ) : (
-                    <p>{message}</p>
-            )}
-            <p>Text</p>
-        </div>
+        <Router>
+            <div className="app">
+                <div className="app__container">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<Navigate to="/login" />}
+                        />
+                        <Route
+                            path="/signup"
+                            element={<Signup />}
+                        />
+                        <Route
+                            path="/login"
+                            element={<Login setUser={setUser} />} 
+                        />
+                        <Route
+                            path="/dashboard"
+                            element={<Dashboard user={user} />}
+                        />
+                    </Routes>
+                </div>
+            </div>
+        </Router>
     )
 }
 
