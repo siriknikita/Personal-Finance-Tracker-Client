@@ -22,8 +22,9 @@ function App() {
             {(typeof (message) === "undefined") ? (
                 <p>Loading...</p>
             ) : (
-                <p>{message}</p>
+                    <p>{message}</p>
             )}
+            <p>Text</p>
         </div>
     )
 }
