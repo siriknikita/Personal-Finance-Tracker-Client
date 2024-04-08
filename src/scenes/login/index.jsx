@@ -3,7 +3,10 @@ import { React, useState } from "react";
 import styles from "./styles.module.css";
 
 async function fetchData(url, property) {
-    const response = await fetch(`https://personal-finance-tracker-server.azurewebsites.net/api/${url}`);
+    const response = await fetch(`https://personal-finance-tracker-server.azurewebsites.net/api/${url}`, {
+        method: "GET",
+        mode: "no-cors"
+    });
     const data = await response.json();
     return data[property];
 }
