@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 async function fetchGet(url) {
     try {
-        let response = await fetch(`${process.env.REACT_APP_API_URL}/api/${url}`);
+        let response = await fetch(`https://personal-finance-tracker-server.azurewebsites.net/api/${url}`);
         console.log(response);
         console.log(response.json());
         let responseData = await response.json();
