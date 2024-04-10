@@ -1,21 +1,14 @@
+import PaymentOutlineIcon from '@mui/icons-material/PaymentOutlined';
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../App";
+import { ColorModeContext, useMode } from "../../theme";
 import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
 import styles from "./styles.module.css";
-import { useLocation } from "react-router-dom";
-import React, { useState } from "react";
-import PaymentOutlineIcon from '@mui/icons-material/PaymentOutlined'
-import { ColorModeContext, useMode } from "../../theme";
-
-// async function fetchData(url, property) {
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     return data[property];
-// }
 
 function Dashboard() {
-    const location = useLocation();
-    const user = location.state.user;
+    const { user } = useContext(UserContext);
     const [theme, colorMode] = useMode();
     const [isSidebar, setIsSidebar] = useState(true);
 

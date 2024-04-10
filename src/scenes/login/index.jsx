@@ -1,17 +1,25 @@
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import { UserContext } from "../../App";
 import styles from "./styles.module.css";
 
-async function fetchData(url, property) {
-    const response = await fetch(`https://personal-finance-tracker-server.azurewebsites.net/api/${url}`, {
+async function fetchData(url) {
+    const response = await fetch(`http://localhost:8080/api/${url}`, {
         method: "GET",
-        mode: "no-cors"
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors"
     });
-    const data = await response.json();
-    return data[property];
+    if (!response.ok) {
+        console.log(response);
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
 }
 
 function Login() {
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [passwordHash, setPasswordHash] = useState("");
     const navigate = useNavigate();
@@ -19,8 +27,9 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let user = await fetchData(`login/${email}/${passwordHash}`, "user");
-            navigate("/dashboard", { state: { user: user } });
+            let user = await fetchData(`login/${email}/${passwordHash}`);
+            setUser(user.user);
+            navigate("/dashboard");
         } catch (error) {
             console.error("Error logging in:", error);
         }

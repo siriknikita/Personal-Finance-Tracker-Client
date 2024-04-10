@@ -54,30 +54,30 @@ Before you begin, ensure you have the following:
 ### Week 3:
 - Complete income management module ✔️
 - Enhance dashboard with data visualization components ✔️
-- Implement basic goal setting functionality.
-- Begin work on notification system.
+- Implement basic goal setting functionality ✔️
+- Begin work on notification system ❌
 - Write unit tests for authentication and basic functionalities ✔️
 
 ### Week 4:
 - Finalize budgeting tools, including allocation and tracking features ✔️
 - Improve data visualization for enhanced user experience ✔️
-- Complete initial version of notification system.
+- Complete initial version of notification system ❌
 - Start development of transaction history module️ ✔️
 - Write unit tests for expense tracking and income management ️️✔️
 
 ### Week 5:
 - Implement transaction history functionality ️️️️️️✔️
 - Refine user interface for better usability ✔️
-- Test and debug notification system.
-- Begin work on profile management features.
+- Test and debug notification system ❌
+- Begin work on profile management features ✔️
 - Write unit tests for budgeting tools and data visualization ✔️
 
 ### Week 6:
-- Complete profile management module.
-- Integrate feedback mechanism into the application.
-- Conduct comprehensive testing of all implemented features.
-- Address any reported bugs or issues.
-- Prepare for deployment to Azure environment.
+- Complete profile management module ❌
+- Integrate feedback mechanism into the application ❌
+- Conduct comprehensive testing of all implemented features ✔️
+- Address any reported bugs or issues ✔️
+- Prepare for deployment to Azure environment ✔️
 
 ### Week 7:
 - Perform final testing and validation before deployment.
