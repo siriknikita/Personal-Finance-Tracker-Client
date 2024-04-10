@@ -73,7 +73,7 @@ Before you begin, ensure you have the following:
 - Write unit tests for budgeting tools and data visualization ✔️
 
 ### Week 6:
-- Complete profile management module ❌
+- Complete profile management module ✔️
 - Integrate feedback mechanism into the application ❌
 - Conduct comprehensive testing of all implemented features ✔️
 - Address any reported bugs or issues ✔️
