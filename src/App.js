@@ -1,12 +1,13 @@
-import React, { useState, createContext } from 'react';
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import React, { createContext, useState } from 'react';
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ColorModeContext, useMode } from "./theme";
 import Dashboard from "./scenes/dashboard";
 import Login from "./scenes/login";
 import Signup from "./scenes/signup";
-import TransactionForm from "./scenes/transactions";
-import ProfileForm from './scenes/profileForm';
+import ProfileForm from './scenes/forms/profileForm';
+import TransactionForm from "./scenes/forms/transactionsForm";
+import GoalForm from "./scenes/forms/goalForm";
 
 export const UserContext = createContext(null);
 
@@ -41,11 +42,15 @@ function App() {
                                     />
                                     <Route
                                         path="/transactionForm"
-                                        element={<TransactionForm user={user} />}
+                                        element={<TransactionForm />}
                                     />
                                     <Route
                                         path="/profileForm"
                                         element={<ProfileForm />}
+                                    />
+                                    <Route
+                                        path="/goalForm"
+                                        element={<GoalForm />}
                                     />
                                 </Routes>
                             </div>

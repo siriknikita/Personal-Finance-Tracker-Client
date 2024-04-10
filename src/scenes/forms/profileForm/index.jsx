@@ -1,10 +1,10 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import Sidebar from "../global/Sidebar";
-import Topbar from "../global/Topbar";
-import { ColorModeContext, useMode } from "../../theme";
-import React, { useState, useRef, useContext } from "react";
-import { UserContext } from "../../App";
-import styles from "./styles.module.css";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../App";
+import { ColorModeContext, useMode } from "../../../theme";
+import Sidebar from "../../global/Sidebar";
+import Topbar from "../../global/Topbar";
 
 function ProfileForm() {
     const [theme, colorMode] = useMode();
@@ -17,6 +17,7 @@ function ProfileForm() {
     const [newUsername, setNewUsername] = useState("");
     const [newEmail, setNewEmail] = useState("");
     const [newPassword, setNewPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +37,7 @@ function ProfileForm() {
                 const data = await response.json();
                 const message = data.message;
                 alert(message);
+                navigate("/dashboard");
             } else if (currentOption === "email") {
                 const response = await fetch("/api/update/email", {
                     method: "POST",
@@ -50,6 +52,7 @@ function ProfileForm() {
                 const data = await response.json();
                 const message = data.message;
                 alert(message);
+                navigate("/dashboard");
             } else if (currentOption === "password") {
                 const response = await fetch("/api/update/password", {
                     method: "POST",
@@ -64,6 +67,7 @@ function ProfileForm() {
                 const data = await response.json();
                 const message = data.message;
                 alert(message);
+                navigate("/dashboard");
             }
         } catch (error) {
             console.error("Error adding transaction:", error);
@@ -99,7 +103,6 @@ function ProfileForm() {
                                 <>
                                     <input 
                                         type="text"
-                                        className={styles.input}
                                         placeholder="Current Username"
                                         value={currentUsername}
                                         onChange={(e) => setCurrentUsername(e.target.value)}
@@ -108,7 +111,6 @@ function ProfileForm() {
                                     <br />
                                     <input
                                         type="text"
-                                        className={styles.input}
                                         placeholder="New Username"
                                         value={newUsername}
                                         onChange={(e) => setNewUsername(e.target.value)}
@@ -120,7 +122,6 @@ function ProfileForm() {
                                 <>
                                     <input 
                                         type="password"
-                                        className={styles.input}
                                         placeholder="Current Password"
                                         value={currentPassword}
                                         onChange={(e) => setCurrentPassword(e.target.value)}
@@ -129,7 +130,6 @@ function ProfileForm() {
                                     <br />
                                     <input
                                         type="password"
-                                        className={styles.input}
                                         placeholder="New Password"
                                         value={newPassword}
                                         onChange={(e) => setNewPassword(e.target.value)}
@@ -141,7 +141,6 @@ function ProfileForm() {
                                 <>
                                     <input 
                                         type="email"
-                                        className={styles.input}
                                         placeholder="Current Email"
                                         value={currentEmail}
                                         onChange={(e) => setCurrentEmail(e.target.value)}
@@ -150,7 +149,6 @@ function ProfileForm() {
                                     <br />
                                     <input
                                         type="email"
-                                        className={styles.input}
                                         placeholder="New Email"
                                         value={newEmail}
                                         onChange={(e) => setNewEmail(e.target.value)}
@@ -160,7 +158,7 @@ function ProfileForm() {
                             )}
                             <br />
                             <br />
-                            <button className={styles.btn}>Submit</button>
+                            <button>Submit</button>
                         </form>
                     </main>
                 </div>

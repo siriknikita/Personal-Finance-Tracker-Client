@@ -1,10 +1,10 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import Sidebar from "../global/Sidebar";
-import Topbar from "../global/Topbar";
-import { ColorModeContext, useMode } from "../../theme";
-import React, { useState, useContext } from "react";
-import { UserContext } from "../../App";
-import styles from "./styles.module.css";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom"
+import { UserContext } from "../../../App";
+import { ColorModeContext, useMode } from "../../../theme";
+import Sidebar from "../../global/Sidebar";
+import Topbar from "../../global/Topbar";
 
 function TransactionForm() {
     const [theme, colorMode] = useMode();
@@ -12,6 +12,7 @@ function TransactionForm() {
     const { user } = useContext(UserContext);
     const [currentAmount, setCurrentAmount] = useState(0);
     const [currentCategoryID, setCurrentCategoryID] = useState(1);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,8 +32,8 @@ function TransactionForm() {
                 console.log(response);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            e.target.reset();
             alert("Transaction added successfully!");
+            navigate("/dashboard");
         } catch (error) {
             console.error("Error adding transaction:", error);
         }
@@ -56,7 +57,6 @@ function TransactionForm() {
                                 Enter amount of money ($):
                                 <input 
                                     type="number"
-                                    className={styles.input}
                                     placeholder="Amount"
                                     value={currentAmount}
                                     onChange={(e) => setCurrentAmount(e.target.value)}
@@ -82,7 +82,7 @@ function TransactionForm() {
                             </label>
                             <br />
                             <br />
-                            <button className={styles.btn}>Submit</button>
+                            <button>Submit</button>
                         </form>
                     </main>
                 </div>

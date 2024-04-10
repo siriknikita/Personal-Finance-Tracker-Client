@@ -11,6 +11,8 @@ function Dashboard() {
     const { user } = useContext(UserContext);
     const [theme, colorMode] = useMode();
     const [isSidebar, setIsSidebar] = useState(true);
+    let categories = []
+    let moneySpent = []
 
     return (
         <ColorModeContext.Provider value={colorMode}>
