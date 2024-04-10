@@ -1,5 +1,5 @@
 import Plotly from "plotly.js-dist";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function plotExpenseStat(divID, categories, moneySpent) {
     const layout = { title: "Money spent on each category" };
@@ -8,9 +8,16 @@ function plotExpenseStat(divID, categories, moneySpent) {
 }
 
 function PlotStatistics({ categories, moneySpent }) {
+    const [passedCategories, setPassedCategories] = useState([]);
+    const [passedMoneySpent, setPassedMoneySpent] = useState([]);
+
     useEffect(() => {
-        plotExpenseStat("chartDiv", categories, moneySpent);
-    }, [categories, moneySpent]);
+        categories.then(categories => setPassedCategories(categories.categories));
+        moneySpent.then(moneySpent => setPassedMoneySpent(moneySpent.moneySpent));
+        console.log(passedCategories);
+        console.log(passedMoneySpent);
+        plotExpenseStat("chartDiv", passedCategories, passedMoneySpent);
+    }, [categories, passedCategories, moneySpent, passedMoneySpent]);
 
     return <div id='chartDiv'></div>;
 }

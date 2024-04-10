@@ -2,13 +2,10 @@ import React from 'react'
 import PlotStatistics from './Plot'
 
 async function fetchData(url) {
-    try {
-        let response = await fetch(`${process.env.REACT_APP_API_URL}/api/${url}`);
-        let data = await response.json();
-        return data;
-    } catch (error) {
-        throw new Error(`Error loading data: ${error}`);
-    }
+    const response = await fetch(`http://localhost:8080/api/${url}`);
+    const data = await response.json();
+
+    return data;
 }
 
 async function fetchMoneySpent(userID) {
@@ -20,8 +17,6 @@ async function fetchTransactionCategories(userID) {
 }
 
 function PieChart({ userID }) {
-    console.log("UserID:");
-    console.log(userID);
     const categories = fetchTransactionCategories(userID);
     const moneySpent = fetchMoneySpent(userID);
 

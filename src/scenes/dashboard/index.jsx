@@ -5,14 +5,14 @@ import { UserContext } from "../../App";
 import { ColorModeContext, useMode } from "../../theme";
 import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
+import PieChart from '../../components/PieChart';
+import TransactionsTable from '../../components/TransactionsTable';
 import styles from "./styles.module.css";
 
 function Dashboard() {
     const { user } = useContext(UserContext);
     const [theme, colorMode] = useMode();
     const [isSidebar, setIsSidebar] = useState(true);
-    let categories = []
-    let moneySpent = []
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -43,6 +43,16 @@ function Dashboard() {
                                             {user.TotalSpent}
                                         </span>
                                     </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div className={styles.info_box}>
+                                    <PieChart userID={user.UserID} />
+                                </div>
+                            </section>
+                            <section>
+                                <div className={styles.info_box}>
+                                    <TransactionsTable />
                                 </div>
                             </section>
                         </div>
