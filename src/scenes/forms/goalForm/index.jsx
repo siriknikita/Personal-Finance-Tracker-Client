@@ -31,7 +31,7 @@ function GoalForm() {
             const data = await response.json();
             const message = data.message;
             alert(message);
-            navigate("/dashboard");
+            navigate("/goals");
         } catch (error) {
             console.error(error);
         }

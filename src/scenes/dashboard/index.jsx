@@ -7,6 +7,7 @@ import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
 import PieChart from '../../components/PieChart';
 import TransactionsTable from '../../components/TransactionsTable';
+import GoalTable from '../../components/GoalTable';
 import styles from "./styles.module.css";
 
 function Dashboard() {
@@ -47,10 +48,10 @@ function Dashboard() {
                             </section>
                             <section>
                                 <div className={styles.info_box}>
-                                    <PieChart userID={user.UserID} />
+                                    <div>
+                                        <PieChart userID={user.UserID} />
+                                    </div>
                                 </div>
-                            </section>
-                            <section>
                                 <div className={styles.info_box}>
                                     <TransactionsTable />
                                 </div>

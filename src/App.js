@@ -8,6 +8,7 @@ import Signup from "./scenes/signup";
 import ProfileForm from './scenes/forms/profileForm';
 import TransactionForm from "./scenes/forms/transactionsForm";
 import GoalForm from "./scenes/forms/goalForm";
+import GoalTable from "./components/GoalTable";
 
 export const UserContext = createContext(null);
 
@@ -51,6 +52,10 @@ function App() {
                                     <Route
                                         path="/goalForm"
                                         element={<GoalForm />}
+                                    />
+                                    <Route
+                                        path="/goals"
+                                        element={<GoalTable />}
                                     />
                                 </Routes>
                             </div>
