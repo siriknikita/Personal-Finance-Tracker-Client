@@ -14,10 +14,11 @@ export const UserContext = createContext(null);
 
 function App() {
     const [user, setUser] = useState(null);
+    const [isAuthorized, setIsAuthorized] = useState(false);
     const [theme, colorMode] = useMode();
 
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <UserContext.Provider value={{user, setUser, setIsAuthorized}}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
@@ -37,26 +38,30 @@ function App() {
                                         path="/login"
                                         element={<Login setUser={setUser} />} 
                                     />
-                                    <Route
-                                        path="/dashboard"
-                                        element={<Dashboard user={user} />}
-                                    />
-                                    <Route
-                                        path="/transactionForm"
-                                        element={<TransactionForm />}
-                                    />
-                                    <Route
-                                        path="/profileForm"
-                                        element={<ProfileForm />}
-                                    />
-                                    <Route
-                                        path="/goalForm"
-                                        element={<GoalForm />}
-                                    />
-                                    <Route
-                                        path="/goals"
-                                        element={<GoalTable />}
-                                    />
+                                    {isAuthorized && (
+                                        <>
+                                            <Route
+                                                path="/dashboard"
+                                                element={<Dashboard user={user} />}
+                                            />
+                                            <Route
+                                                path="/transactionForm"
+                                                element={<TransactionForm />}
+                                            />
+                                            <Route
+                                                path="/profileForm"
+                                                element={<ProfileForm />}
+                                            />
+                                            <Route
+                                                path="/goalForm"
+                                                element={<GoalForm />}
+                                            />
+                                            <Route
+                                                path="/goals"
+                                                element={<GoalTable />}
+                                            />
+                                        </>
+                                    )}
                                 </Routes>
                             </div>
                         </div>

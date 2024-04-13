@@ -7,7 +7,6 @@ import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
 import PieChart from '../../components/PieChart';
 import TransactionsTable from '../../components/TransactionsTable';
-import GoalTable from '../../components/GoalTable';
 import styles from "./styles.module.css";
 
 function Dashboard() {
@@ -41,7 +40,7 @@ function Dashboard() {
                                     </div>
                                     <div className={styles.box_content}>
                                         <span className={styles.big}>
-                                            {user.TotalSpent}
+                                            {user.totalSpent}
                                         </span>
                                     </div>
                                 </div>
@@ -49,7 +48,7 @@ function Dashboard() {
                             <section>
                                 <div className={styles.info_box}>
                                     <div>
-                                        <PieChart userID={user.UserID} />
+                                        <PieChart userID={user.userID} />
                                     </div>
                                 </div>
                                 <div className={styles.info_box}>

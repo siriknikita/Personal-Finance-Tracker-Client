@@ -1,20 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import { UserContext } from "../../App";
 import styles from "./styles.module.css";
 
 async function fetchGet(url) {
     try {
-        let response = await fetch(`https://personal-finance-tracker-server.azurewebsites.net/api/${url}`);
-        console.log(response);
-        console.log(response.json());
-        let responseData = await response.json();
-        return responseData;
+        let response = await fetch(`/api/${url}`);
+        return await response.json();
     } catch (error) {
         throw new Error(`Error getting data: ${error}`);
     }
 }
 
 function Signup() {
+    const { setUser, setIsAuthorized } = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [passwordHash, setPasswordHash] = useState("");
@@ -28,8 +27,9 @@ function Signup() {
                 alert(response.error);
                 return;
             }
-            console.log("User was created");
-            navigate("/dashboard", { state: { user: response.user } });
+            setUser(response.user);
+            setIsAuthorized(true);
+            navigate("/dashboard");
         } catch (error) {
             console.error("Error signing up:", error);
         }

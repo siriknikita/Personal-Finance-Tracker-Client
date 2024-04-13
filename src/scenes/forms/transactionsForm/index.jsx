@@ -17,13 +17,13 @@ function TransactionForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let response = await fetch("http://localhost:8080/api/add/transaction", {
+            const response = await fetch("/api/add/transaction", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    userID: user.UserID,
+                    userID: user.userID,
                     amount: currentAmount,
                     categoryID: currentCategoryID,
                 }),
@@ -32,7 +32,6 @@ function TransactionForm() {
                 console.log(response);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            alert("Transaction added successfully!");
             navigate("/dashboard");
         } catch (error) {
             console.error("Error adding transaction:", error);

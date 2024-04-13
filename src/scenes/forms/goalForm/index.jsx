@@ -11,26 +11,23 @@ function GoalForm() {
     const [isSidebar, setIsSidebar] = useState(true);
     const { user } = useContext(UserContext);
     const [goalDescripiton, setGoalDescription] = useState("");
-    const [deadline, setDeadline] = useState(null);
+    const [deadline, setDeadline] = useState(undefined);
     const navigate = useNavigate();
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("/api/set/goal", {
+            await fetch("/api/set/goal", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    userID: user.UserID,
+                    userID: user.userID,
                     goal: goalDescripiton,
                     deadline: deadline
                 })
             });
-            const data = await response.json();
-            const message = data.message;
-            alert(message);
             navigate("/goals");
         } catch (error) {
             console.error(error);

@@ -6,7 +6,7 @@ import Sidebar from "../scenes/global/Sidebar";
 import Topbar from "../scenes/global/Topbar";
 
 async function fetchData(url) {
-    const response = await fetch(`http://localhost:8080/api/${url}`);
+    const response = await fetch(`/api/${url}`);
     const data = await response.json();
 
     return data;
@@ -20,11 +20,11 @@ function GoalTable() {
 
     useEffect(() => {
         async function fetchGoals() {
-            const data = await fetchData(`get/goals/${user.UserID}`);
+            const data = await fetchData(`get/goals/${user.userID}`);
             setGoals(data.goals);
         }
         fetchGoals();
-    }, [user.UserID]);
+    }, [user.userID]);
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -48,10 +48,10 @@ function GoalTable() {
                             {/* Table body */}
                             <tbody>
                                 {/* The key is required for each mapped element in React lists */}
-                                {goals?.map((transaction) => (
+                                {goals?.map((goal) => (
                                     <tr>
-                                        <td>{transaction?.GoalDescription}</td>
-                                        <td>{transaction?.Deadline}</td>
+                                        <td>{goal.description}</td>
+                                        <td>{goal.deadline}</td>
                                     </tr>
                                 ))}
                             </tbody>

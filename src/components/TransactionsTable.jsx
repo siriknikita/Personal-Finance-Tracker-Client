@@ -2,50 +2,46 @@ import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../App'
 
 async function fetchData(url) {
-    const response = await fetch(`http://localhost:8080/api/${url}`);
-    const data = await response.json();
-
-    return data;
+    const response = await fetch(`/api/${url}`);
+    return await response.json();
 }
 
 function TransactionsTable() {
     const { user } = useContext(UserContext);
     const [transactions, setTransactions] = useState([]);
+    const categories = fetchData(`get/transactions/categrories/${user.userID}`);
 
     useEffect(() => {
         async function fetchTransactions() {
-            const data = await fetchData(`get/transactions/${user.UserID}`);
+            const data = await fetchData(`get/transactions/${user.userID}`);
             setTransactions(data.transactions);
         }
 
         fetchTransactions();
-    }, [user.UserID]);
+    }, [user.userID]);
 
     return (
         <table>
             {/* Table headers */}
             <thead>
-                <tr>
-                    <th>TransactionID</th>
-                    <th>Amount</th>
-                    <th>CategoryID</th>
-                    <th>TransactionDate</th>
-                </tr>
+            <tr>
+                <th>TransactionID</th>
+                <th>CategoryID</th>
+                <th>Amount</th>
+            </tr>
             </thead>
-            {/* Table body */}
             <tbody>
-                {/* The key is required for each mapped element in React lists */}
-                {transactions?.map((transaction) => (
-                    <tr key={transaction?.TransactionID}> {/* Use TransactionID as the unique key */}
-                        <td>{transaction?.TransactionID}</td>
-                        <td>{transaction?.Amount}</td>
-                        <td>{transaction?.CategoryID}</td>
-                        <td>{transaction?.TransactionDate}</td>
-                    </tr>
-                ))}
+            {transactions?.map((transaction, index) => (
+                <tr key={transaction?.id}>
+                {" "}
+                <td>{transaction?.id}</td>
+                <td>{categories[index]}</td>
+                <td>{transaction?.amount}</td>
+                </tr>
+            ))}
             </tbody>
         </table>
-    )
+    );
 }
 
 export default TransactionsTable

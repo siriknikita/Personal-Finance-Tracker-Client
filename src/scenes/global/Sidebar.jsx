@@ -2,7 +2,7 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+// import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import React, { useState, useContext } from "react";
 import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
@@ -93,10 +93,10 @@ const Sidebar = () => {
                                     fontWeight="bold"
                                     sx={{ m: "10px 0 0 0" }}
                                 >
-                                    {user?.Username}
+                                    {user?.username}
                                 </Typography>
                                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                                    {user?.Email}
+                                    {user?.email}
                                 </Typography>
                             </Box>
                         </Box>

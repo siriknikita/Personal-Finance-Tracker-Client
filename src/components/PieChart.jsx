@@ -2,7 +2,7 @@ import React from 'react'
 import PlotStatistics from './Plot'
 
 async function fetchData(url) {
-    const response = await fetch(`http://localhost:8080/api/${url}`);
+    const response = await fetch(`/api/${url}`);
     const data = await response.json();
 
     return data;

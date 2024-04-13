@@ -14,8 +14,6 @@ function PlotStatistics({ categories, moneySpent }) {
     useEffect(() => {
         categories.then(categories => setPassedCategories(categories.categories));
         moneySpent.then(moneySpent => setPassedMoneySpent(moneySpent.moneySpent));
-        console.log(passedCategories);
-        console.log(passedMoneySpent);
         plotExpenseStat("chartDiv", passedCategories, passedMoneySpent);
     }, [categories, passedCategories, moneySpent, passedMoneySpent]);
 

@@ -9,7 +9,7 @@ import Topbar from "../../global/Topbar";
 function ProfileForm() {
     const [theme, colorMode] = useMode();
     const [isSidebar, setIsSidebar] = useState(true);
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [currentOption, setCurrentOption] = useState("username");
     const [currentUsername, setCurrentUsername] = useState("");
     const [currentEmail, setCurrentEmail] = useState("");
@@ -23,50 +23,44 @@ function ProfileForm() {
         e.preventDefault();
         try {
             if (currentOption === "username") {
-                const response = await fetch("/api/update/username", {
+                await fetch("/api/update/username", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email: user.Email,
+                        email: user.email,
                         currentUsername: currentUsername,
                         newUsername: newUsername
                     })
                 });
-                const data = await response.json();
-                const message = data.message;
-                alert(message);
+                setUser({ ...user, username: newUsername });
                 navigate("/dashboard");
             } else if (currentOption === "email") {
-                const response = await fetch("/api/update/email", {
+                await fetch("/api/update/email", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email: user.Email,
+                        email: user.email,
                         newEmail: newEmail
                     })
                 });
-                const data = await response.json();
-                const message = data.message;
-                alert(message);
+                setUser({ ...user, email: newEmail });
                 navigate("/dashboard");
             } else if (currentOption === "password") {
-                const response = await fetch("/api/update/password", {
+                await fetch("/api/update/password", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email: user.Email,
+                        email: user.email,
                         newPasswordHash: newPassword
                     })
                 });
-                const data = await response.json();
-                const message = data.message;
-                alert(message);
+                setUser({ ...user, passwordHash: newPassword });
                 navigate("/dashboard");
             }
         } catch (error) {
