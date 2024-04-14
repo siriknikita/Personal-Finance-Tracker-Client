@@ -5,7 +5,6 @@ import { UserContext } from "../../App";
 import { ColorModeContext, useMode } from "../../theme";
 import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
-import CategoriesPieChart from '../../components/categoriesPieChart';
 import styles from "./styles.module.css";
 
 function Dashboard() {
@@ -44,13 +43,10 @@ function Dashboard() {
                                     </div>
                                 </div>
                             </section>
-                            <section>
-                                {/* <div className={styles.info_box}>
-                                    <div>
-                                    </div>
-                                </div> */}
-                                <CategoriesPieChart />
-                            </section>
+                            {/* <div className={styles.info_box}>
+                                <div>
+                                </div>
+                            </div> */}
                         </div>
                     </main>
                 </div>
