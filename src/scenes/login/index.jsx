@@ -27,8 +27,9 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let user = await fetchData(`login/${email}/${passwordHash}`);
-            setUser(user.user);
+            const response = await fetchData(`login/${email}/${passwordHash}`);
+            console.log(response.user);
+            setUser(response.user);
             setIsAuthorized(true);
             navigate("/dashboard");
         } catch (error) {
