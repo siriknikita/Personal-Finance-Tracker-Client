@@ -1,11 +1,19 @@
-import React from "react";
-// import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { getMoneySpent } from "../utils/categories";
 
-const CategoriesPieChart = async ({ user }) => {
+function CategoriesPieChart({ user }) {
     const userID = user.userID;
-    const moneySpentData = getMoneySpent(userID);
+    const [moneySpentData, setMoneySpentData] = useState({});
+    
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getMoneySpent(userID);
+            setMoneySpentData(data);
+        }
+        fetchData();
+    }, [userID]);
+
     const categoriesNames = Object.keys(moneySpentData);
     const moneySpentOnCategories = Object.values(moneySpentData);
     

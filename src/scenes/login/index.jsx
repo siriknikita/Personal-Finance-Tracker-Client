@@ -28,7 +28,6 @@ function Login() {
         e.preventDefault();
         try {
             const response = await fetchData(`login/${email}/${passwordHash}`);
-            console.log(response.user);
             setUser(response.user);
             setIsAuthorized(true);
             navigate("/dashboard");

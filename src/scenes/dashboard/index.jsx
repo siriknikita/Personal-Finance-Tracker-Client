@@ -55,7 +55,6 @@ function Dashboard() {
                                 <div>
                                 </div>
                             </div> */}
-                            {console.log(user.userID)}
                             {showPieChart && <><CategoriesPieChart user={user} /></>}
                         </div>
                     </main>

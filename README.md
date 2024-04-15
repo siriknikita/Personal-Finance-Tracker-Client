@@ -19,11 +19,14 @@ Before you begin, ensure you have the following:
 - A computer with internet access
 - A web browser (Google Chrome, Mozilla Firefox, Safari, etc.)
 #### Steps to Setup Personal Finance Tracker Locally
-##### Step 1: Sign in to Google Account
-
-1. Open your preferred web browser.
-2. Go to Personal Finance Tracker.
-3. Sign in with your Google account credentials (email and password).
+To setup the Personal Finance Tracker locally, you will need to open up your prefered command line and run the following commands:
+```sh
+git clone https://github.com/siriknikita/Siryk.University.PersonalFinanceTracker-1.git
+cd Siryk.University.PersonalFinanceTracker-1
+npm i
+npm start
+```
+Congradulations! Now, you are ready to use the application locally!
 
 ##### Step 2: Explore Finance Tracker Features
 
@@ -80,10 +83,10 @@ Before you begin, ensure you have the following:
 - Prepare for deployment to Azure environment ✔️
 
 ### Week 7:
-- Perform final testing and validation before deployment.
+- Perform final testing and validation before deployment ️️️️️✔️
 - Optimize application performance and security.
-- Prepare documentation for local setup and usage.
-- Finalize Readme.md file with comprehensive instructions.
+- Prepare documentation for local setup and usage ✔️
+- Finalize Readme.md file with comprehensive instructions ✔️
 - Conduct user acceptance testing (UAT) internally.
 
 ### Week 8:
