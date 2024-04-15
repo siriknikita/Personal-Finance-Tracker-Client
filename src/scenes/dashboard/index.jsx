@@ -40,22 +40,9 @@ function Dashboard() {
                             {/* Section about money data */}
                             <section className={styles.info_boxes}>
                                 <div className={styles.info_box}>
-                                    {/* Payment icon */}
-                                    <div className={styles.box_icon}>
-                                        <PaymentOutlineIcon />
-                                    </div>
-                                    <div className={styles.box_content}>
-                                        <span className={styles.big}>
-                                            {user.totalSpent}
-                                        </span>
-                                    </div>
+                                    {showPieChart && <><CategoriesPieChart userID={user.userID} /></>}
                                 </div>
                             </section>
-                            {/* <div className={styles.info_box}>
-                                <div>
-                                </div>
-                            </div> */}
-                            {showPieChart && <><CategoriesPieChart user={user} /></>}
                         </div>
                     </main>
                 </div>
