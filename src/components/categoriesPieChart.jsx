@@ -1,28 +1,32 @@
 import React from "react";
-import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { getMoneySpent, formatMoneySpentData } from "../utils/categories";
+// import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import Chart from "react-apexcharts";
+import { getMoneySpent } from "../utils/categories";
 
-const CategoriesPieChart = async ({ userID }) => {
+const CategoriesPieChart = async ({ user }) => {
+    const userID = user.userID;
     const moneySpentData = getMoneySpent(userID);
-    const data = formatMoneySpentData(moneySpentData);
-
-    return (
-        <ResponsiveContainer width="30%" height="30%">
-            <PieChart width={400} height={400}>
-                <Pie
-                    dataKey="value"
-                    isAnimationActive={false}
-                    data={data}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    fill="#8884d8"
-                    label
-                />
-                <Tooltip />
-            </PieChart>
-        </ResponsiveContainer>
-    );
+    const categoriesNames = Object.keys(moneySpentData);
+    const moneySpentOnCategories = Object.values(moneySpentData);
+    
+    return React.createElement(Chart, {
+        type: "pie",
+        series: moneySpentOnCategories,
+        labels: {
+            show: false,
+            name: {
+                show: true,
+            },
+        },
+        options: {
+            lables: categoriesNames,
+            legend: {
+                show: true,
+                position: "bottom",
+            },
+            // colors: ["#00AB55", "#2D99FF", "#FFE700", "#826AF9"],
+        },
+    });
 };
 
 export default CategoriesPieChart;

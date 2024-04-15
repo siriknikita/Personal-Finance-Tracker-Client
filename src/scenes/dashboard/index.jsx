@@ -1,16 +1,24 @@
 import PaymentOutlineIcon from '@mui/icons-material/PaymentOutlined';
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import { ColorModeContext, useMode } from "../../theme";
 import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
 import styles from "./styles.module.css";
+import CategoriesPieChart from '../../components/categoriesPieChart';
 
 function Dashboard() {
     const { user } = useContext(UserContext);
     const [theme, colorMode] = useMode();
     const [isSidebar, setIsSidebar] = useState(true);
+    const [showPieChart, setShowPieChart] = useState(false);
+
+    useEffect(() => {
+        setInterval(() => {
+            setShowPieChart(true);
+        }, 1000);
+    });
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -47,6 +55,8 @@ function Dashboard() {
                                 <div>
                                 </div>
                             </div> */}
+                            {console.log(user.userID)}
+                            {showPieChart && <><CategoriesPieChart user={user} /></>}
                         </div>
                     </main>
                 </div>
