@@ -1,4 +1,3 @@
-import PaymentOutlineIcon from '@mui/icons-material/PaymentOutlined';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
