@@ -27,6 +27,7 @@ npm i
 npm start
 ```
 Congradulations! Now, you are ready to use the application locally!
+Note: you don't need to type the commands yourself. You can just press the icon on commands fields.
 
 ##### Step 2: Explore Finance Tracker Features
 
