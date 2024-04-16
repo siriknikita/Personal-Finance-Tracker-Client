@@ -1,23 +1,20 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { UserContext } from "../../App";
+import PieChartSkeleton from "../../components/PieChartSkeleton";
+import CategoriesPieChart from "../../components/categoriesPieChart";
 import { ColorModeContext, useMode } from "../../theme";
 import Sidebar from "../global/Sidebar";
 import Topbar from "../global/Topbar";
 import styles from "./styles.module.css";
-import CategoriesPieChart from '../../components/categoriesPieChart';
+
+export const LoadingContet = createContext(null);
 
 function Dashboard() {
     const { user } = useContext(UserContext);
     const [theme, colorMode] = useMode();
     const [isSidebar, setIsSidebar] = useState(true);
     const [showPieChart, setShowPieChart] = useState(false);
-
-    useEffect(() => {
-        setInterval(() => {
-            setShowPieChart(true);
-        }, 1000);
-    });
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -39,7 +36,14 @@ function Dashboard() {
                             {/* Section about money data */}
                             <section className={styles.info_boxes}>
                                 <div className={styles.info_box}>
-                                    {showPieChart && <><CategoriesPieChart userID={user.userID} /></>}
+                                    <LoadingContet.Provider
+                                        value={{ setShowPieChart }}
+                                    >
+                                        {!showPieChart && <PieChartSkeleton />}
+                                        <CategoriesPieChart
+                                            userID={user.userID}
+                                        />
+                                    </LoadingContet.Provider>
                                 </div>
                             </section>
                         </div>
