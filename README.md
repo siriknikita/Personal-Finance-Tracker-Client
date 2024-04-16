@@ -35,60 +35,56 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 2. From the dropdown menu, select "Settings".
 3. Set up as you preffer from proposed settings.
 
-## Project Documentation
-
-
 ## Project Task Decomposition
 
-
 ### Week 1:
-- Implement user authentication via Google account ✔️
-- Set up basic project structure ✔️
-- Develop initial dashboard layout ✔️
-- Create database schema for user data storage ✔️
-- Set up Azure environment for deployment ✔️
+✔️ Implement user authentication via Google account
+✔️ Set up basic project structure
+✔️ Develop initial dashboard layout
+✔️ Create database schema for user data storage
+✔️ Set up Azure environment for deployment
 
 ### Week 2:
-- Finalize user authentication flow ✔️
-- Implement expense tracking functionality ✔️
-- Develop basic income management features ✔️
-- Design initial budgeting tools interface ✔️
-- Set up CI/CD pipeline for automated deployment ✔️
+✔️ Finalize user authentication flow
+✔️ Implement expense tracking functionality
+✔️ Develop basic income management features
+✔️ Design initial budgeting tools interface
+✔️ Set up CI/CD pipeline for automated deployment
 
 ### Week 3:
-- Complete income management module ✔️
-- Enhance dashboard with data visualization components ✔️
-- Implement basic goal setting functionality ✔️
-- Begin work on notification system 
-- Write unit tests for authentication and basic functionalities 
+✔️ Complete income management module
+✔️ Enhance dashboard with data visualization components
+✔️ Implement basic goal setting functionality
+🕑 Begin work on notification system
+✔️ Write unit tests for authentication and basic functionalities
 
 ### Week 4:
-- Finalize budgeting tools, including allocation and tracking features ✔️
-- Improve data visualization for enhanced user experience ✔️
-- Complete initial version of notification system 
-- Start development of transaction history module️ ✔️
-- Write unit tests for expense tracking and income management ️️
+✔️ Finalize budgeting tools, including allocation and tracking features
+✔️ Improve data visualization for enhanced user experience
+🕑 Complete initial version of notification system
+✔️ Start development of transaction history module️
+✔️ Write unit tests for expense tracking and income management
 
 ### Week 5:
-- Implement transaction history functionality ️️️️️️✔️
-- Refine user interface for better usability ✔️
-- Test and debug notification system 
-- Begin work on profile management features ✔️
-- Write unit tests for budgeting tools and data visualization ✔️
+✔️ Implement transaction history functionality
+✔️ Refine user interface for better usability
+🕑 Test and debug notification system 
+✔️ Begin work on profile management features
+✔️ Write unit tests for budgeting tools and data visualization
 
 ### Week 6:
-- Complete profile management module ✔️
-- Integrate feedback mechanism into the application 
-- Conduct comprehensive testing of all implemented features ✔️
-- Address any reported bugs or issues ✔️
-- Prepare for deployment to Azure environment ✔️
+✔️ Complete profile management module
+🕑 Integrate feedback mechanism into the application
+✔️ Conduct comprehensive testing of all implemented features
+✔️ Address any reported bugs or issues
+✔️ Prepare for deployment to Azure environment
 
 ### Week 7:
-- Perform final testing and validation before deployment ️️️️️✔️
-- Optimize application performance and security.
-- Prepare documentation for local setup and usage ✔️
-- Finalize Readme.md file with comprehensive instructions ✔️
-- Conduct user acceptance testing (UAT) internally.
+✔️ Perform final testing and validation before deployment
+🕑 Optimize application performance and security
+✔️ Prepare documentation for local setup and usage
+✔️ Finalize Readme.md file with comprehensive instructions
+🕑 Conduct user acceptance testing (UAT) internally
 
 ### Week 8:
 - Deploy application to Azure platform.
