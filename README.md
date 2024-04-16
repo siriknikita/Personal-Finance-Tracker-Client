@@ -81,7 +81,7 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 
 ### Week 7:
 #### ✔️ Perform final testing and validation before deployment
-#### 🕑 Optimize application performance and security
+#### ✔️ Optimize application performance and security
 #### ✔️ Prepare documentation for local setup and usage
 #### ✔️ Finalize Readme.md file with comprehensive instructions
 #### 🕑 Conduct user acceptance testing (UAT) internally
