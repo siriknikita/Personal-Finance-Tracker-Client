@@ -7,6 +7,7 @@ function CategoriesPieChart({ userID }) {
     const [moneySpentData, setMoneySpentData] = useState({});
     const { setShowPieChart } = useContext(LoadingContet);
 
+    // eslint-disable-next-line
     useLayoutEffect(() => {
         async function fetchData() {
             const data = await getMoneySpent(userID);
