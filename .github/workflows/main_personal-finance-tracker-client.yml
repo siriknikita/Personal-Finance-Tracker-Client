@@ -57,5 +57,5 @@ jobs:
         with:
           app-name: 'personal-finance-tracker-client'
           slot-name: 'Production'
-          package: release.zip
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_198BF4DA205B4496A5AEBA74A36EE2D6 }}
