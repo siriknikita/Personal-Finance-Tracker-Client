@@ -47,28 +47,6 @@ function CategoriesPieChart({ userID }) {
             <Chart options={data.options} series={data.series} type="pie" height="100%" width="30%" />
         </>
     )
-
-    // return React.createElement(Chart, {
-    //     type: "pie",
-    //     chart: {
-    //         width: "30%",
-    //     },
-    //     series: moneySpentOnCategories,
-    //     labels: {
-    //         show: false,
-    //         name: {
-    //             show: true,
-    //         },
-    //     },
-    //     options: {
-    //         lables: categoriesNames,
-    //         legend: {
-    //             show: true,
-    //             position: "bottom",
-    //         },
-    //         // colors: ["#00AB55", "#2D99FF", "#FFE700", "#826AF9"],
-    //     },
-    // });
 };
 
 export default CategoriesPieChart;

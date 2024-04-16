@@ -10,6 +10,10 @@ body,
   font-family: "Source Sans Pro", sans-serif;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .app {
   display: flex;
   position: relative;
