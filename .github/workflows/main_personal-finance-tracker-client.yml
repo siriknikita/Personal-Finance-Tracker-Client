@@ -26,11 +26,17 @@ jobs:
           npm install
           npm run build
       
+      - name: Zip Release
+        uses: TheDoctor0/zip-release@0.6.1
+        with:
+          filename: release.zip
+          path: ./*
+      
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,5 +57,5 @@ jobs:
         with:
           app-name: 'personal-finance-tracker-client'
           slot-name: 'Production'
-          package: .
+          package: release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_198BF4DA205B4496A5AEBA74A36EE2D6 }}
