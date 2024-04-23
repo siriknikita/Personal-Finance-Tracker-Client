@@ -23,29 +23,32 @@ function ProfileForm() {
         e.preventDefault();
         try {
             if (currentOption === "username") {
-                await fetch("/api/update/username", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: user.email,
-                        currentUsername: currentUsername,
-                        newUsername: newUsername
-                    })
-                });
+                await fetch(
+                    `${process.env.REACT_APP_API_BASE_URL}/api/update/username`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email: user.email,
+                            currentUsername: currentUsername,
+                            newUsername: newUsername,
+                        }),
+                    }
+                );
                 setUser({ ...user, username: newUsername });
                 navigate("/dashboard");
             } else if (currentOption === "email") {
                 await fetch("/api/update/email", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         email: user.email,
-                        newEmail: newEmail
-                    })
+                        newEmail: newEmail,
+                    }),
                 });
                 setUser({ ...user, email: newEmail });
                 navigate("/dashboard");
@@ -53,12 +56,12 @@ function ProfileForm() {
                 await fetch("/api/update/password", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         email: user.email,
-                        newPasswordHash: newPassword
-                    })
+                        newPasswordHash: newPassword,
+                    }),
                 });
                 setUser({ ...user, passwordHash: newPassword });
                 navigate("/dashboard");
@@ -66,7 +69,7 @@ function ProfileForm() {
         } catch (error) {
             console.error("Error adding transaction:", error);
         }
-    }
+    };
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -82,24 +85,28 @@ function ProfileForm() {
                         <h3>Change the data!</h3>
                         <label>
                             Choose a data:
-                            <select 
+                            <select
                                 value={currentOption}
-                                onChange={(e) => setCurrentOption(e.target.value)}
+                                onChange={(e) =>
+                                    setCurrentOption(e.target.value)
+                                }
                             >
                                 <option value="username">username</option>
                                 <option value="email">email</option>
                                 <option value="password">password</option>
                             </select>
                         </label>
-                        
+
                         <form onSubmit={handleSubmit}>
                             {currentOption === "username" && (
                                 <>
-                                    <input 
+                                    <input
                                         type="text"
                                         placeholder="Current Username"
                                         value={currentUsername}
-                                        onChange={(e) => setCurrentUsername(e.target.value)}
+                                        onChange={(e) =>
+                                            setCurrentUsername(e.target.value)
+                                        }
                                         required
                                     />
                                     <br />
@@ -107,18 +114,22 @@ function ProfileForm() {
                                         type="text"
                                         placeholder="New Username"
                                         value={newUsername}
-                                        onChange={(e) => setNewUsername(e.target.value)}
+                                        onChange={(e) =>
+                                            setNewUsername(e.target.value)
+                                        }
                                         required
                                     />
                                 </>
                             )}
                             {currentOption === "password" && (
                                 <>
-                                    <input 
+                                    <input
                                         type="password"
                                         placeholder="Current Password"
                                         value={currentPassword}
-                                        onChange={(e) => setCurrentPassword(e.target.value)}
+                                        onChange={(e) =>
+                                            setCurrentPassword(e.target.value)
+                                        }
                                         required
                                     />
                                     <br />
@@ -126,18 +137,22 @@ function ProfileForm() {
                                         type="password"
                                         placeholder="New Password"
                                         value={newPassword}
-                                        onChange={(e) => setNewPassword(e.target.value)}
+                                        onChange={(e) =>
+                                            setNewPassword(e.target.value)
+                                        }
                                         required
                                     />
                                 </>
                             )}
                             {currentOption === "email" && (
                                 <>
-                                    <input 
+                                    <input
                                         type="email"
                                         placeholder="Current Email"
                                         value={currentEmail}
-                                        onChange={(e) => setCurrentEmail(e.target.value)}
+                                        onChange={(e) =>
+                                            setCurrentEmail(e.target.value)
+                                        }
                                         required
                                     />
                                     <br />
@@ -145,7 +160,9 @@ function ProfileForm() {
                                         type="email"
                                         placeholder="New Email"
                                         value={newEmail}
-                                        onChange={(e) => setNewEmail(e.target.value)}
+                                        onChange={(e) =>
+                                            setNewEmail(e.target.value)
+                                        }
                                         required
                                     />
                                 </>
@@ -158,7 +175,7 @@ function ProfileForm() {
                 </div>
             </ThemeProvider>
         </ColorModeContext.Provider>
-    )
+    );
 }
 
-export default ProfileForm
+export default ProfileForm;

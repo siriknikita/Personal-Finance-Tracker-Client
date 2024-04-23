@@ -1,16 +1,19 @@
+import { React, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState, useContext } from "react";
 import { UserContext } from "../../App";
 import styles from "./styles.module.css";
 
 async function fetchData(url) {
-    const response = await fetch(`/api/${url}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        mode: "cors"
-    });
+    const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/${url}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+        }
+    );
     if (!response.ok) {
         console.log(response);
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -35,18 +38,22 @@ function Login() {
             console.error("Error logging in:", error);
         }
     };
-    
+
     return (
         <div className={styles.container}>
             <h1 className={styles.heading}>Log in Form</h1>
             <div className={styles.form_container}>
                 <div className={styles.left}>
-                    <img className={styles.img} src="./images/login.jpg" alt="login" />
+                    <img
+                        className={styles.img}
+                        src="./images/login.jpg"
+                        alt="login"
+                    />
                 </div>
                 <div className={styles.right}>
                     <h2 className={styles.from_heading}>Members Log in</h2>
                     <form onSubmit={handleSubmit}>
-                        <input 
+                        <input
                             type="text"
                             className={styles.input}
                             placeholder="Email"

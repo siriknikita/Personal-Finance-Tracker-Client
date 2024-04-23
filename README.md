@@ -134,7 +134,7 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 
 ### Week 8:
 
-#### 🕑 Deploy application to Azure platform.
+#### ✔️ [Deploy application to Azure platform](https://personal-finance-tracker-pft-client.azurewebsites.net)
 
 #### 🕑 Monitor and ensure proper functioning of deployed application.
 

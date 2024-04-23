@@ -13,26 +13,26 @@ function GoalForm() {
     const [goalDescripiton, setGoalDescription] = useState("");
     const [deadline, setDeadline] = useState(undefined);
     const navigate = useNavigate();
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await fetch("/api/set/goal", {
+            await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/set/goal`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     userID: user.userID,
                     goal: goalDescripiton,
-                    deadline: deadline
-                })
+                    deadline: deadline,
+                }),
             });
             navigate("/goals");
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -45,24 +45,20 @@ function GoalForm() {
                             isSidebar={isSidebar}
                             setIsSidebar={setIsSidebar}
                         />
-                        <h3>
-                            Set your goals!
-                        </h3>
+                        <h3>Set your goals!</h3>
                         <form onSubmit={handleSubmit}>
-                            <label>
-                                Goal:
-                            </label>
+                            <label>Goal:</label>
                             <br />
                             <input
                                 type="text"
                                 value={goalDescripiton}
                                 placeholder="Your goal description"
-                                onChange={(e) => setGoalDescription(e.target.value)}
+                                onChange={(e) =>
+                                    setGoalDescription(e.target.value)
+                                }
                             />
                             <br />
-                            <label>
-                                Deadline:
-                            </label>
+                            <label>Deadline:</label>
                             <br />
                             <input
                                 type="date"
@@ -76,7 +72,7 @@ function GoalForm() {
                 </div>
             </ThemeProvider>
         </ColorModeContext.Provider>
-    )
+    );
 }
 
-export default GoalForm
+export default GoalForm;

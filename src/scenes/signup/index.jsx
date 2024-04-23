@@ -1,11 +1,13 @@
+import { React, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState, useContext } from "react";
 import { UserContext } from "../../App";
 import styles from "./styles.module.css";
 
 async function fetchGet(url) {
     try {
-        let response = await fetch(`/api/${url}`);
+        let response = await fetch(
+            `${process.env.REACT_APP_API_BASE_URL}/api/${url}`
+        );
         return await response.json();
     } catch (error) {
         throw new Error(`Error getting data: ${error}`);
@@ -22,7 +24,9 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let response = await fetchGet(`signup/${username}/${email}/${passwordHash}`);
+            let response = await fetchGet(
+                `signup/${username}/${email}/${passwordHash}`
+            );
             if (response.error) {
                 alert(response.error);
                 return;
@@ -40,7 +44,11 @@ function Signup() {
             <h1 className={styles.heading}>Sign up Form</h1>
             <div className={styles.form_container}>
                 <div className={styles.left}>
-                    <img className={styles.img} src="./images/signup.jpg" alt="signup" />
+                    <img
+                        className={styles.img}
+                        src="./images/signup.jpg"
+                        alt="signup"
+                    />
                 </div>
                 <div className={styles.right}>
                     <h2 className={styles.from_heading}>Create Account</h2>
@@ -70,10 +78,15 @@ function Signup() {
                             required
                         />
                         <br />
-                        <button type="submit" className={styles.btn}>Sign Up</button>
+                        <button type="submit" className={styles.btn}>
+                            Sign Up
+                        </button>
                     </form>
                     <p className={styles.text}>or</p>
-                    <button className={styles.google_btn} onClick={console.log("Not implemented yet...")}>
+                    <button
+                        className={styles.google_btn}
+                        onClick={console.log("Not implemented yet...")}
+                    >
                         <img src="./images/google.png" alt="google icon" />
                         <span>Sing up with Google</span>
                     </button>

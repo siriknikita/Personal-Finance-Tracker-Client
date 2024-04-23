@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../App";
 import { ColorModeContext, useMode } from "../../../theme";
 import Sidebar from "../../global/Sidebar";
@@ -17,17 +17,20 @@ function TransactionForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("/api/add/transaction", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    userID: user.userID,
-                    amount: currentAmount,
-                    categoryID: currentCategoryID,
-                }),
-            });
+            const response = await fetch(
+                `${process.env.REACT_APP_API_BASE_URL}/api/add/transaction`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        userID: user.userID,
+                        amount: currentAmount,
+                        categoryID: currentCategoryID,
+                    }),
+                }
+            );
             if (!response.ok) {
                 console.log(response);
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,7 +39,7 @@ function TransactionForm() {
         } catch (error) {
             console.error("Error adding transaction:", error);
         }
-    }
+    };
 
     return (
         <ColorModeContext.Provider value={colorMode}>
@@ -54,11 +57,13 @@ function TransactionForm() {
                             {/* Enter amount of money */}
                             <label>
                                 Enter amount of money ($):
-                                <input 
+                                <input
                                     type="number"
                                     placeholder="Amount"
                                     value={currentAmount}
-                                    onChange={(e) => setCurrentAmount(e.target.value)}
+                                    onChange={(e) =>
+                                        setCurrentAmount(e.target.value)
+                                    }
                                     required
                                 />
                             </label>
@@ -66,9 +71,11 @@ function TransactionForm() {
                             {/* Choose a category */}
                             <label>
                                 Choose a category:
-                                <select 
+                                <select
                                     value={currentCategoryID}
-                                    onChange={(e) => setCurrentCategoryID(e.target.value)}
+                                    onChange={(e) =>
+                                        setCurrentCategoryID(e.target.value)
+                                    }
                                 >
                                     <option value="1">Groceries</option>
                                     <option value="2">Utilities</option>
@@ -87,7 +94,7 @@ function TransactionForm() {
                 </div>
             </ThemeProvider>
         </ColorModeContext.Provider>
-    )
+    );
 }
 
-export default TransactionForm
+export default TransactionForm;
