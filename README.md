@@ -136,9 +136,9 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 
 #### ✔️ [Deploy application to Azure platform](https://personal-finance-tracker-pft-client.azurewebsites.net)
 
-#### 🕑 Monitor and ensure proper functioning of deployed application.
+#### ✔️ Monitor and ensure proper functioning of deployed application.
 
-#### 🕑 Address any deployment-related issues or errors.
+#### ✔️ Address any deployment-related issues or errors.
 
 #### 🕑 Verify CI/CD pipeline for automated deployments.
 
