@@ -3,15 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import styles from "./styles.module.css";
 
-async function fetchGet(url) {
-    try {
-        let response = await fetch(
-            `${process.env.REACT_APP_API_BASE_URL}/api/${url}`
-        );
-        return await response.json();
-    } catch (error) {
-        throw new Error(`Error getting data: ${error}`);
+async function fetchData(url) {
+    const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/${url}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+        }
+    );
+    if (!response.ok) {
+        console.log(response);
+        throw new Error(`HTTP error! status: ${response.status}`);
     }
+    return await response.json();
 }
 
 function Signup() {
@@ -24,13 +31,9 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let response = await fetchGet(
+            const response = await fetchData(
                 `signup/${username}/${email}/${passwordHash}`
             );
-            if (response.error) {
-                alert(response.error);
-                return;
-            }
             setUser(response.user);
             setIsAuthorized(true);
             navigate("/dashboard");
