@@ -4,6 +4,9 @@ This is my project for the personal finance tracking, a good app for tracking yo
 
 https://personal-finance-tracker-pft-client.azurewebsites.net
 
+## Feedback
+You can leave your feedback on any issues or errors right here: [Feedback Form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
+
 ## Author
 
 Mykyta Siryk
@@ -45,6 +48,9 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 1. Once logged in, click on the gear icon located in the top left corner of the screen.
 2. From the dropdown menu, select "Settings".
 3. Set up as you preffer from proposed settings.
+
+## Testing an Application
+For the purpose of project improvement, an application was deployed and tested on Azure. While testing, a bugs was found and addressed to the [feedback form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
 
 ## Project Task Decomposition
 
