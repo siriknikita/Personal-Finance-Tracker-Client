@@ -144,7 +144,7 @@ For the purpose of project improvement, an application was deployed and tested o
 
 #### ✔️ Monitor and ensure proper functioning of deployed application.
 
-#### ✔️ Address any deployment-related issues or errors.
+#### ✔️ [Address any deployment-related issues or errors](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing)
 
 #### 🕑 Verify CI/CD pipeline for automated deployments.
 
