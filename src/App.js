@@ -1,14 +1,20 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import React, { createContext, useState } from 'react';
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { ColorModeContext, useMode } from "./theme";
+import React, { createContext, useState } from "react";
+import {
+    Navigate,
+    Route,
+    BrowserRouter as Router,
+    Routes,
+} from "react-router-dom";
+import GoalTable from "./components/GoalTable";
+import Notification from "./components/Notification";
 import Dashboard from "./scenes/dashboard";
+import GoalForm from "./scenes/forms/goalForm";
+import ProfileForm from "./scenes/forms/profileForm";
+import TransactionForm from "./scenes/forms/transactionsForm";
 import Login from "./scenes/login";
 import Signup from "./scenes/signup";
-import ProfileForm from './scenes/forms/profileForm';
-import TransactionForm from "./scenes/forms/transactionsForm";
-import GoalForm from "./scenes/forms/goalForm";
-import GoalTable from "./components/GoalTable";
+import { ColorModeContext, useMode } from "./theme";
 
 export const UserContext = createContext(null);
 
@@ -18,11 +24,12 @@ function App() {
     const [theme, colorMode] = useMode();
 
     return (
-        <UserContext.Provider value={{user, setUser, setIsAuthorized}}>
+        <UserContext.Provider value={{ user, setUser, setIsAuthorized }}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
                     <Router>
+                        <Notification />
                         <div className="app">
                             <div className="app__container">
                                 <Routes>
@@ -36,13 +43,15 @@ function App() {
                                     />
                                     <Route
                                         path="/login"
-                                        element={<Login setUser={setUser} />} 
+                                        element={<Login setUser={setUser} />}
                                     />
                                     {isAuthorized && (
                                         <>
                                             <Route
                                                 path="/dashboard"
-                                                element={<Dashboard user={user} />}
+                                                element={
+                                                    <Dashboard user={user} />
+                                                }
                                             />
                                             <Route
                                                 path="/transactionForm"
@@ -69,7 +78,7 @@ function App() {
                 </ThemeProvider>
             </ColorModeContext.Provider>
         </UserContext.Provider>
-    )
+    );
 }
 
-export default App
+export default App;

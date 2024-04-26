@@ -1,5 +1,6 @@
 import { React, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../App";
 import styles from "./styles.module.css";
 
@@ -16,6 +17,7 @@ async function fetchData(url) {
     );
     if (!response.ok) {
         console.log(response);
+        toast.error("Something went wrong! Please try again.");
         throw new Error(`HTTP error! status: ${response.status}`);
     }
     return await response.json();
@@ -34,7 +36,9 @@ function Login() {
             setUser(response.user);
             setIsAuthorized(true);
             navigate("/dashboard");
+            toast.success("Logged in successfully!");
         } catch (error) {
+            toast.error("Invalid email or password!");
             console.error("Error logging in:", error);
         }
     };
