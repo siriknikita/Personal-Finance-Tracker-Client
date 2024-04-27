@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
 import { ColorModeContext, useMode } from "../../../theme";
 import Sidebar from "../../global/Sidebar";
@@ -33,11 +34,13 @@ function TransactionForm() {
             );
             if (!response.ok) {
                 console.log(response);
-                throw new Error(`HTTP error! status: ${response.status}`);
+                toast.error("Failed to add transaction!");
             }
             navigate("/dashboard");
+            toast.success("Transaction added successfully!");
         } catch (error) {
             console.error("Error adding transaction:", error);
+            toast.error("Failed to add transaction!");
         }
     };
 

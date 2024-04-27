@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
 import { ColorModeContext, useMode } from "../../../theme";
 import Sidebar from "../../global/Sidebar";
@@ -29,8 +30,10 @@ function GoalForm() {
                 }),
             });
             navigate("/goals");
+            toast.success("Goal added successfully!");
         } catch (error) {
             console.error(error);
+            toast.error("Failed to add goal!");
         }
     };
 

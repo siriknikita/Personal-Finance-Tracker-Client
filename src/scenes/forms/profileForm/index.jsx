@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
 import { ColorModeContext, useMode } from "../../../theme";
 import Sidebar from "../../global/Sidebar";
@@ -66,8 +67,10 @@ function ProfileForm() {
                 setUser({ ...user, passwordHash: newPassword });
                 navigate("/dashboard");
             }
+            toast.success("Profile updated successfully!");
         } catch (error) {
-            console.error("Error adding transaction:", error);
+            console.error("Error updating profile:", error);
+            toast.error("Failed to update profile!");
         }
     };
 
