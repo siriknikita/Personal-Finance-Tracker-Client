@@ -28,7 +28,7 @@ async function fetchData(url) {
 
 async function loginUser(email) {
     const passwordHash = extractPasswordFromEmail(email);
-    const response = await fetchData(`login/${email}/${passwordHash}`);
+    const response = await fetchData(`login/${email}/${passwordHash}/true`);
     return response.user;
 }
 
@@ -65,7 +65,9 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetchData(`login/${email}/${passwordHash}`);
+            const response = await fetchData(
+                `login/${email}/${passwordHash}/false`
+            );
             setUser(response.user);
             setIsAuthorized(true);
             navigate("/dashboard");
