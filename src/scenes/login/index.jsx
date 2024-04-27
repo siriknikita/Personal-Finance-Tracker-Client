@@ -1,7 +1,10 @@
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import { React, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../App";
+import { extractPasswordFromEmail } from "../../utils/auth";
 import styles from "./styles.module.css";
 
 async function fetchData(url) {
@@ -23,11 +26,41 @@ async function fetchData(url) {
     return await response.json();
 }
 
+async function loginUser(email) {
+    const passwordHash = extractPasswordFromEmail(email);
+    const response = await fetchData(`login/${email}/${passwordHash}`);
+    return response.user;
+}
+
 function Login() {
     const { setUser, setIsAuthorized } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [passwordHash, setPasswordHash] = useState("");
     const navigate = useNavigate();
+
+    const googleLogin = useGoogleLogin({
+        onSuccess: async (respose) => {
+            try {
+                const res = await axios.get(
+                    "https://www.googleapis.com/oauth2/v3/userinfo",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${respose.access_token}`,
+                        },
+                    }
+                );
+                const data = res.data;
+                const user = await loginUser(data.email);
+                setUser(user);
+                setIsAuthorized(true);
+                navigate("/dashboard");
+                toast.success("Logged in via Google successfully!");
+            } catch (err) {
+                console.log(`[LOGIN] Error logging in via Google: ${err}`);
+                toast.error("Error logging in via Google!");
+            }
+        },
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -77,7 +110,7 @@ function Login() {
                         <button className={styles.btn}>Log In</button>
                     </form>
                     <p className={styles.text}>or</p>
-                    <button className={styles.google_btn}>
+                    <button className={styles.google_btn} onClick={googleLogin}>
                         <img src="./images/google.png" alt="google icon" />
                         <span>Sing in with Google</span>
                     </button>

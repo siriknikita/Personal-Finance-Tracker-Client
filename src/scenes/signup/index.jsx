@@ -1,6 +1,10 @@
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import { React, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../App";
+import { extractPasswordFromEmail } from "../../utils/auth";
 import styles from "./styles.module.css";
 
 async function fetchData(url) {
@@ -16,9 +20,19 @@ async function fetchData(url) {
     );
     if (!response.ok) {
         console.log(response);
+        toast.error("Something went wrong! Please try again.");
         throw new Error(`HTTP error! status: ${response.status}`);
     }
     return await response.json();
+}
+
+async function registerUser(email) {
+    const passwordHash = extractPasswordFromEmail(email);
+    const username = passwordHash;
+    const response = await fetchData(
+        `signup/${username}/${email}/${passwordHash}`
+    );
+    return response.user;
 }
 
 function Signup() {
@@ -27,6 +41,29 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [passwordHash, setPasswordHash] = useState("");
     const navigate = useNavigate();
+
+    const googleRegister = useGoogleLogin({
+        onSuccess: async (respose) => {
+            try {
+                const res = await axios.get(
+                    "https://www.googleapis.com/oauth2/v3/userinfo",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${respose.access_token}`,
+                        },
+                    }
+                );
+                const data = res.data;
+                const user = await registerUser(data.email);
+                setUser(user);
+                setIsAuthorized(true);
+                navigate("/dashboard");
+                toast.success("Registered via Google successfully!");
+            } catch (err) {
+                console.log(err);
+            }
+        },
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +74,9 @@ function Signup() {
             setUser(response.user);
             setIsAuthorized(true);
             navigate("/dashboard");
+            toast.success("Logged in successfully!");
         } catch (error) {
+            toast.error("Something went wrong! Please try again.");
             console.error("Error signing up:", error);
         }
     };
@@ -88,7 +127,7 @@ function Signup() {
                     <p className={styles.text}>or</p>
                     <button
                         className={styles.google_btn}
-                        onClick={console.log("Not implemented yet...")}
+                        onClick={googleRegister}
                     >
                         <img src="./images/google.png" alt="google icon" />
                         <span>Sing up with Google</span>
