@@ -13,6 +13,7 @@ import GoalForm from "./scenes/forms/goalForm";
 import ProfileForm from "./scenes/forms/profileForm";
 import TransactionForm from "./scenes/forms/transactionsForm";
 import Login from "./scenes/login";
+import Profile from "./scenes/profile";
 import Signup from "./scenes/signup";
 import { ColorModeContext, useMode } from "./theme";
 
@@ -68,6 +69,10 @@ function App() {
                                             <Route
                                                 path="/goals"
                                                 element={<GoalTable />}
+                                            />
+                                            <Route
+                                                path="/profile"
+                                                element={<Profile />}
                                             />
                                         </>
                                     )}

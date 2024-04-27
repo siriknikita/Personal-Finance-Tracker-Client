@@ -5,6 +5,7 @@ This is my project for the personal finance tracking, a good app for tracking yo
 https://personal-finance-tracker-pft-client.azurewebsites.net
 
 ## Feedback
+
 You can leave your feedback on any issues or errors right here: [Feedback Form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
 
 ## Author
@@ -50,6 +51,7 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 3. Set up as you preffer from proposed settings.
 
 ## Testing an Application
+
 For the purpose of project improvement, an application was deployed and tested on Azure. While testing, a bugs was found and addressed to the [feedback form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
 
 ## Project Task Decomposition
@@ -152,7 +154,7 @@ For the purpose of project improvement, an application was deployed and tested o
 
 ### Week 9:
 
-#### 🕑 Gather user feedback on deployed application.
+#### ✔️ Gather user feedback on deployed application.
 
 #### 🕑 Analyze user behavior and usage patterns.
 
