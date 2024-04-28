@@ -71,10 +71,14 @@ function Signup() {
             const response = await fetchData(
                 `signup/${username}/${email}/${passwordHash}`
             );
-            setUser(response.user);
-            setIsAuthorized(true);
-            navigate("/dashboard");
-            toast.success("Logged in successfully!");
+            if (response.ok) {
+                setUser(response.user);
+                setIsAuthorized(true);
+                navigate("/dashboard");
+                toast.success("Logged in successfully!");
+            } else {
+                toast.error(response.error);
+            }
         } catch (error) {
             toast.error("Something went wrong! Please try again.");
             console.error("Error signing up:", error);

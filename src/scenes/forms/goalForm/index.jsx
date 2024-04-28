@@ -12,13 +12,13 @@ function GoalForm() {
     const [isSidebar, setIsSidebar] = useState(true);
     const { user } = useContext(UserContext);
     const [goalDescripiton, setGoalDescription] = useState("");
-    const [deadline, setDeadline] = useState(undefined);
+    const [deadline, setDeadline] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/set/goal`, {
+            await fetch(`/api/set/goal`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

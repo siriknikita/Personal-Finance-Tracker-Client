@@ -1,9 +1,9 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
-import { ColorModeContext, useMode } from "../theme";
 import Sidebar from "../scenes/global/Sidebar";
 import Topbar from "../scenes/global/Topbar";
+import { ColorModeContext, useMode } from "../theme";
 
 async function fetchData(url) {
     const response = await fetch(`/api/${url}`);
@@ -49,7 +49,7 @@ function GoalTable() {
                             <tbody>
                                 {/* The key is required for each mapped element in React lists */}
                                 {goals?.map((goal) => (
-                                    <tr>
+                                    <tr key={goal.description}>
                                         <td>{goal.description}</td>
                                         <td>{goal.deadline}</td>
                                     </tr>
@@ -60,7 +60,7 @@ function GoalTable() {
                 </div>
             </ThemeProvider>
         </ColorModeContext.Provider>
-    )
+    );
 }
 
-export default GoalTable
+export default GoalTable;
