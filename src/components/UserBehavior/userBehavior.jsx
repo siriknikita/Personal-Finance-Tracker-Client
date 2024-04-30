@@ -1,21 +1,21 @@
 import React, { useContext, useLayoutEffect, useState } from "react";
 import Chart from "react-apexcharts";
-import { LoadingContet } from "../scenes/dashboard";
-import { getMoneySpent } from "../utils/categories";
+import { LoadingContet } from "../../scenes/dashboard";
+import { getUsersSpending } from "../../utils/categories";
 
-function CategoriesPieChart({ userID }) {
+const UserBehavior = () => {
   const [moneySpentData, setMoneySpentData] = useState({});
   const { setShowPieChart } = useContext(LoadingContet);
 
   useLayoutEffect(() => {
     async function fetchData() {
-      const data = await getMoneySpent(userID);
-      setMoneySpentData(data.data);
+      const data = await getUsersSpending();
+      setMoneySpentData(data.usersSpending);
       setShowPieChart(true);
     }
     fetchData();
     // eslint-disable-next-line
-  }, [userID]);
+  }, []);
 
   const categoriesNames = Object.keys(moneySpentData);
   const moneySpentOnCategories = Object.values(moneySpentData);
@@ -56,6 +56,6 @@ function CategoriesPieChart({ userID }) {
       />
     </>
   );
-}
+};
 
-export default CategoriesPieChart;
+export default UserBehavior;
