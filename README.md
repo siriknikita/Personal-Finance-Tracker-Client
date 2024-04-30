@@ -182,7 +182,7 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 #### ✔️ Gather user feedback on deployed application.
 
-#### 🕑 Analyze user behavior and usage patterns.
+#### ✔️ Analyze user behavior and usage patterns.
 
 #### ✔️ Plan and prioritize future enhancements or features.
 
