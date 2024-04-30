@@ -1,4 +1,3 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 import {
   createColumnHelper,
@@ -8,9 +7,7 @@ import {
 } from "@tanstack/react-table";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
-import Sidebar from "../../scenes/global/Sidebar";
-import Topbar from "../../scenes/global/Topbar";
-import { ColorModeContext, useMode } from "../../theme";
+import PageLayout from "../PageLayout/PageLayout";
 import styles from "./styles.module.css";
 
 async function fetchData(url) {
@@ -33,8 +30,6 @@ const columns = [
 
 function TransactionsTable() {
   const { user } = useContext(UserContext);
-  const [theme, colorMode] = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
   const [transactions, setTransactions] = useState([]);
   const categories = fetchData(`get/transactions/categrories/${user.userID}`);
 
@@ -55,61 +50,37 @@ function TransactionsTable() {
   });
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="app">
-          <Sidebar isSidebar={isSidebar} user={user} />
-          <main className="content">
-            <Topbar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
-            <Box>
-              <Box className={styles.container + "content"}>
-                <table>
-                  <thead>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                      <tr key={headerGroup.id}>
-                        {headerGroup.headers.map((header) => (
-                          <th key={header.id}>
-                            {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
-                          </th>
-                        ))}
-                      </tr>
-                    ))}
-                  </thead>
-                  <tbody>
-                    {transactions?.map((transaction, index) => (
-                      <tr key={transaction?.id}>
-                        <td>{transaction?.id}</td>
-                        <td>{categories[index]}</td>
-                        <td>{transaction?.amount}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  {/* An example
-                  <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                      <tr key={row.id}>
-                        {row.getVisibleCells().map((cell) => (
-                          <td key={cell.id}>
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody> */}
-                </table>
-              </Box>
-            </Box>
-          </main>
-        </div>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <PageLayout>
+      <Box>
+        <Box className={styles.container + "content"}>
+          <table>
+            <thead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th key={header.id}>
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {transactions?.map((transaction, index) => (
+                <tr key={transaction?.id}>
+                  <td>{transaction?.id}</td>
+                  <td>{categories[index]}</td>
+                  <td>{transaction?.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Box>
+      </Box>
+    </PageLayout>
   );
 }
 
