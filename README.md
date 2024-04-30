@@ -26,9 +26,9 @@ Welcome to Personal Finance Tracker! This guide will walk you through the proces
 
 Before you begin, ensure you have the following:
 
--   A Google account
--   A computer with internet access
--   A web browser (Google Chrome, Mozilla Firefox, Safari, etc.)
+- A Google account
+- A computer with internet access
+- A web browser (Google Chrome, Mozilla Firefox, Safari, etc.)
 
 #### Steps to Setup Personal Finance Tracker Locally
 
@@ -53,6 +53,10 @@ Note: you don't need to type the commands yourself. You can just press the icon 
 ## Testing an Application
 
 For the purpose of project improvement, an application was deployed and tested on Azure. While testing, a bugs was found and addressed to the [feedback form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
+
+## Post-deployment stage
+
+After deployment, a new bugs were found, reported and fixed according to the recommendations and best practices. Also, UI/UX was also improved: better styling, notificaiton system, and other improvements.
 
 ## Project Task Decomposition
 
@@ -160,9 +164,9 @@ For the purpose of project improvement, an application was deployed and tested o
 
 #### 🕑 Plan and prioritize future enhancements or features.
 
-#### 🕑 Update documentation with any post-deployment insights.
+#### ✔️ Update documentation with any post-deployment insights.
 
-#### 🕑 Perform maintenance tasks and bug fixes as necessary.
+#### ✔️ Perform maintenance tasks and bug fixes as necessary.
 
 ### Week 10:
 
