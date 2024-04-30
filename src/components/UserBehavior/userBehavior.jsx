@@ -1,11 +1,15 @@
+import { useTheme } from "@mui/material";
 import React, { useContext, useLayoutEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { LoadingContet } from "../../scenes/dashboard";
+import { tokens } from "../../theme";
 import { getUsersSpending } from "../../utils/categories";
 
 const UserBehavior = () => {
   const [moneySpentData, setMoneySpentData] = useState({});
   const { setShowPieChart } = useContext(LoadingContet);
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   useLayoutEffect(() => {
     async function fetchData() {
@@ -24,7 +28,7 @@ const UserBehavior = () => {
     series: moneySpentOnCategories,
     options: {
       chart: {
-        foreColor: "#CCC",
+        foreColor: colors.grey[100],
         width: 380,
         type: "pie",
       },
