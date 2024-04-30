@@ -60,17 +60,17 @@ After deployment, a new bugs were found, reported and fixed according to the rec
 
 ## Future enhancements and features
 
-#### Add a changelog option while opening the site
+#### 🕑 Add a changelog option while opening the site
 
-#### Integrate Artificial Intelligence technologies for better Users' behaviour analysis
+#### 🕑 Integrate Artificial Intelligence technologies for better Users' behaviour analysis
 
-#### Integrate mathematical instruments for better financial decisions
+#### 🕑 Integrate mathematical instruments for better financial decisions
 
-#### Add an interactive games and score for every user for better UX
+#### 🕑 Add an interactive games and score for every user for better UX
 
-#### Enhance website's features for better performance and modern technology usage
+#### 🕑 Enhance website's features for better performance and modern technology usage
 
-#### Extend to the other platforms
+#### 🕑 Extend to the other platforms
 
 ## Project Task Decomposition
 
