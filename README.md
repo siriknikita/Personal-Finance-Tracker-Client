@@ -58,6 +58,20 @@ For the purpose of project improvement, an application was deployed and tested o
 
 After deployment, a new bugs were found, reported and fixed according to the recommendations and best practices. Also, UI/UX was also improved: better styling, notificaiton system, and other improvements.
 
+## Future enhancements and features
+
+#### Add a changelog option while opening the site
+
+#### Integrate Artificial Intelligence technologies for better Users' behaviour analysis
+
+#### Integrate mathematical instruments for better financial decisions
+
+#### Add an interactive games and score for every user for better UX
+
+#### Enhance website's features for better performance and modern technology usage
+
+#### Extend to the other platforms
+
 ## Project Task Decomposition
 
 ### Week 1:
@@ -162,7 +176,7 @@ After deployment, a new bugs were found, reported and fixed according to the rec
 
 #### 🕑 Analyze user behavior and usage patterns.
 
-#### 🕑 Plan and prioritize future enhancements or features.
+#### ✔️ Plan and prioritize future enhancements or features.
 
 #### ✔️ Update documentation with any post-deployment insights.
 
