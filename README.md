@@ -176,7 +176,7 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 #### 🕑 Verify CI/CD pipeline for automated deployments.
 
-#### 🕑 Perform additional testing on Azure environment.
+#### ✔️ Perform additional testing on Azure environment.
 
 ### Week 9:
 
