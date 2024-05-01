@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../App";
-import PageLayout from "../../components/PageLayout/PageLayout";
-import styles from "./styles.module.css";
+import Header from "../../components/Header";
 
 function Profile() {
   const { user } = useContext(UserContext);
   return (
-    <PageLayout>
-      <header className={styles.content_head}>
-        <h1>Profile for {user.username}</h1>
-        <h2>Working in progress...</h2>
-      </header>
-    </PageLayout>
+    <>
+      <Header title="Profile" subtitle="User profile" />
+      <h1>Profile for {user.username}</h1>
+      <h2>Working in progress...</h2>
+    </>
   );
 }
 

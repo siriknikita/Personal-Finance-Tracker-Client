@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
-import PageLayout from "../../../components/PageLayout/PageLayout";
+import Header from "../../../components/Header";
 
 function GoalForm() {
   const { user } = useContext(UserContext);
@@ -33,8 +33,8 @@ function GoalForm() {
   };
 
   return (
-    <PageLayout>
-      <h3>Set your goals!</h3>
+    <>
+      <Header title="Add a goal" subtitle="Enter your goal details" />
       <form onSubmit={handleSubmit}>
         <label>Goal:</label>
         <br />
@@ -56,7 +56,7 @@ function GoalForm() {
         <br />
         <button>Submit</button>
       </form>
-    </PageLayout>
+    </>
   );
 }
 

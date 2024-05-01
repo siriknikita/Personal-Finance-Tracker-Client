@@ -72,7 +72,6 @@ function Login() {
       const response = await fetchData(
         `login/${email}/${passwordHash}/true/${isAdmin}`
       );
-      console.log(response.user);
       setUser(response.user);
       setIsAuthorized(true);
       navigate("/dashboard");

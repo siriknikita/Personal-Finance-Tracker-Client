@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
-import PageLayout from "../../../components/PageLayout/PageLayout";
+import Header from "../../../components/Header";
 
 function TransactionForm() {
   const { user } = useContext(UserContext);
@@ -40,8 +40,11 @@ function TransactionForm() {
   };
 
   return (
-    <PageLayout>
-      <h3>Add a new transaction!</h3>
+    <>
+      <Header
+        title="Add a transaction"
+        subtitle="Enter your transaction details"
+      />
       <form onSubmit={handleSubmit}>
         {/* Enter amount of money */}
         <label>
@@ -75,7 +78,7 @@ function TransactionForm() {
         <br />
         <button>Submit</button>
       </form>
-    </PageLayout>
+    </>
   );
 }
 

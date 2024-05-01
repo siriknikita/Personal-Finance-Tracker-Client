@@ -7,7 +7,6 @@ import {
 } from "@tanstack/react-table";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
-import PageLayout from "../PageLayout/PageLayout";
 import styles from "./styles.module.css";
 
 async function fetchData(url) {
@@ -50,37 +49,35 @@ function TransactionsTable() {
   });
 
   return (
-    <PageLayout>
-      <Box>
-        <Box className={styles.container + "content"}>
-          <table>
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id}>
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {transactions?.map((transaction, index) => (
-                <tr key={transaction?.id}>
-                  <td>{transaction?.id}</td>
-                  <td>{categories[index]}</td>
-                  <td>{transaction?.amount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Box>
+    <Box>
+      <Box className={styles.container + "content"}>
+        <table>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {transactions?.map((transaction, index) => (
+              <tr key={transaction?.id}>
+                <td>{transaction?.id}</td>
+                <td>{categories[index]}</td>
+                <td>{transaction?.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </Box>
-    </PageLayout>
+    </Box>
   );
 }
 

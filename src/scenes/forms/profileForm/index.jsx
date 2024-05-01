@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
-import PageLayout from "../../../components/PageLayout/PageLayout";
+import Header from "../../../components/Header";
 
 function ProfileForm() {
   const { user, setUser } = useContext(UserContext);
@@ -70,8 +70,8 @@ function ProfileForm() {
   };
 
   return (
-    <PageLayout>
-      <h3>Change the data!</h3>
+    <>
+      <Header title="Profile Form" subtitle="Update your profile" />
       <label>
         Choose a data:
         <select
@@ -146,7 +146,7 @@ function ProfileForm() {
         <br />
         <button>Submit</button>
       </form>
-    </PageLayout>
+    </>
   );
 }
 
