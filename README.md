@@ -192,15 +192,15 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 ### Week 10:
 
-#### 🕑 Implement minor updates or improvements based on user feedback.
+#### ✔️ Implement minor updates or improvements based on user feedback.
 
-#### 🕑 Monitor application performance and stability.
+#### ✔️ Monitor application performance and stability.
 
-#### 🕑 Continue gathering feedback for iterative improvements.
+#### ✔️ Continue gathering feedback for iterative improvements.
 
-#### 🕑 Address any reported issues or bugs promptly.
+#### ✔️ Address any reported issues or bugs promptly.
 
-#### 🕑 Ensure continuous availability and reliability of the application.
+#### ✔️ Ensure continuous availability and reliability of the application.
 
 ### Week 11:
 
