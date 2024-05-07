@@ -4,31 +4,31 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../App";
-import { fetchData } from "../../utils/dataProcessing";
-import { formTableColumns } from "../../utils/tables";
+import React, { useEffect, useState } from "react";
+import { fetchData } from "../utils/dataProcessing";
+import { formTableColumns } from "../utils/tables";
 import styles from "./styles.module.css";
 
-function GoalTable() {
-  const { user } = useContext(UserContext);
-  const [goals, setGoals] = useState([]);
-  const columns = formTableColumns(["userID", "description", "deadline"]);
+export default function Table({ fetchUrl, dataKey, columnsAccessors }) {
+  const [tableData, setTableData] = useState([]);
+
+  const columns = formTableColumns(columnsAccessors);
 
   const table = useReactTable({
-    data: goals,
+    data: tableData,
     columns,
     debugTable: true,
     getCoreRowModel: getCoreRowModel(),
   });
 
   useEffect(() => {
-    async function fetchGoals() {
-      const data = await fetchData(`get/goals/${user.userID}`);
-      setGoals(data.goals);
+    async function fetchTableData() {
+      const fetchedTableData = await fetchData(fetchUrl, dataKey);
+      setTableData(fetchedTableData);
     }
-    fetchGoals();
-  }, [user.userID]);
+    fetchTableData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Box>
@@ -64,5 +64,3 @@ function GoalTable() {
     </Box>
   );
 }
-
-export default GoalTable;

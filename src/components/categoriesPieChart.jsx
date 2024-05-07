@@ -14,7 +14,7 @@ function CategoriesPieChart({ userID }) {
   useLayoutEffect(() => {
     async function fetchData() {
       const data = await getMoneySpent(userID);
-      setMoneySpentData(data.data);
+      setMoneySpentData(data);
       setShowPieChart(true);
     }
     fetchData();

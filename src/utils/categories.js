@@ -1,9 +1,5 @@
-async function fetchData(url) {
-  const response = await fetch(
-    `https://personal-finance-tracker-server.azurewebsites.net/api/${url}`
-  );
-  return response.json();
-}
+import { fetchData } from "./dataProcessing";
+
 export function formatMoneySpentData(data) {
   const categories = Object.keys(data);
   const values = Object.values(data);
@@ -15,9 +11,12 @@ export function formatMoneySpentData(data) {
 }
 
 export async function getMoneySpent(userID) {
-  return await fetchData(`get/transactions/moneySpentOnEachCategory/${userID}`);
+  return await fetchData(
+    `get/transactions/moneySpentOnEachCategory/${userID}`,
+    "data"
+  );
 }
 
 export async function getUsersSpending() {
-  return await fetchData("admin/get/usersSpending");
+  return await fetchData("admin/get/usersSpending", "usersSpending");
 }

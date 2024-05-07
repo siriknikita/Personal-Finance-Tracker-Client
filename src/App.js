@@ -6,9 +6,10 @@ import {
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
-import GoalTable from "./components/GoalTable";
 import Notification from "./components/Notification";
+import Table from "./components/Table";
 import TransactionsTable from "./components/TransactionTable/TransactionsTable";
+import AdminDashboard from "./scenes/adminDashboard";
 import Dashboard from "./scenes/dashboard";
 import GoalForm from "./scenes/forms/goalForm";
 import ProfileForm from "./scenes/forms/profileForm";
@@ -53,12 +54,29 @@ function App() {
                           element={<Dashboard user={user} />}
                         />
                         <Route
+                          path="/adminDashboard"
+                          element={<AdminDashboard />}
+                        />
+                        <Route
                           path="/transactionForm"
                           element={<TransactionForm />}
                         />
                         <Route path="/profileForm" element={<ProfileForm />} />
                         <Route path="/goalForm" element={<GoalForm />} />
-                        <Route path="/goals" element={<GoalTable />} />
+                        <Route
+                          path="/goals"
+                          element={
+                            <Table
+                              fetchUrl={`get/goals/${user.userID}`}
+                              dataKey={"goals"}
+                              columnsAccessors={[
+                                "userID",
+                                "description",
+                                "deadline",
+                              ]}
+                            />
+                          }
+                        />
                         <Route path="/profile" element={<Profile />} />
                         <Route
                           path="/transactions"

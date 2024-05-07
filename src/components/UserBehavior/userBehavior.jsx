@@ -1,21 +1,18 @@
 import { useTheme } from "@mui/material";
-import React, { useContext, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Chart from "react-apexcharts";
-import { LoadingContet } from "../../scenes/dashboard";
 import { tokens } from "../../theme";
 import { getUsersSpending } from "../../utils/categories";
 
 const UserBehavior = () => {
   const [moneySpentData, setMoneySpentData] = useState({});
-  const { setShowPieChart } = useContext(LoadingContet);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   useLayoutEffect(() => {
     async function fetchData() {
       const data = await getUsersSpending();
-      setMoneySpentData(data.usersSpending);
-      setShowPieChart(true);
+      setMoneySpentData(data);
     }
     fetchData();
     // eslint-disable-next-line

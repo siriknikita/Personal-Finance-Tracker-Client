@@ -74,7 +74,11 @@ function Login() {
       );
       setUser(response.user);
       setIsAuthorized(true);
-      navigate("/dashboard");
+      if (isAdmin) {
+        navigate("/adminDashboard");
+      } else {
+        navigate("/dashboard");
+      }
       toast.success("Logged in successfully!");
       if (isAdmin) {
         toast.success("Admin Permissions granted!");

@@ -7,12 +7,8 @@ import {
 } from "@tanstack/react-table";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
+import { fetchData } from "../../utils/dataProcessing";
 import styles from "./styles.module.css";
-
-async function fetchData(url) {
-  const response = await fetch(`/api/${url}`);
-  return await response.json();
-}
 
 const columnHelper = createColumnHelper();
 
@@ -34,8 +30,11 @@ function TransactionsTable() {
 
   useEffect(() => {
     async function fetchTransactions() {
-      const data = await fetchData(`get/transactions/${user.userID}`);
-      setTransactions(data.transactions);
+      const data = await fetchData(
+        `get/transactions/${user.userID}`,
+        "transactions"
+      );
+      setTransactions(data);
     }
 
     fetchTransactions();
