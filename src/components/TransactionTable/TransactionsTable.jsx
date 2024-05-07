@@ -26,7 +26,7 @@ const columns = [
 function TransactionsTable() {
   const { user } = useContext(UserContext);
   const [transactions, setTransactions] = useState([]);
-  const categories = fetchData(`get/transactions/categrories/${user.userID}`);
+  const categories = fetchData(`get/transactions/categories/${user.userID}`);
 
   useEffect(() => {
     async function fetchTransactions() {

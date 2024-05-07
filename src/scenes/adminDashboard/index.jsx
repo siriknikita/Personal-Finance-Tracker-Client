@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
 import Table from "../../components/Table";
-import UserBehavior from "../../components/UserBehavior/userBehavior";
 import styles from "./styles.module.css";
 
 function AdminDashboard() {
@@ -12,9 +11,12 @@ function AdminDashboard() {
         <section className={styles.info_boxes}>
           <div className={styles.info_box}>
             <>
-              <h2>General Users' Spending Behaviour</h2>
-              <UserBehavior />
-              <Table />
+              <h2>Table of users</h2>
+              <Table
+                fetchUrl={"get/users"}
+                dataKey={"users"}
+                columnsAccessors={["username", "email", "registrationDate"]}
+              />
             </>
           </div>
         </section>
