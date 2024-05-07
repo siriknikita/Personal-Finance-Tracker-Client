@@ -1,5 +1,5 @@
 .container {
-  position: absolute;
+  position: fixed;
   height: 600px;
   top: 50%;
   left: 50%;
@@ -7,7 +7,6 @@
 }
 
 table {
-  width: 800px;
   border-collapse: collapse;
   display: block;
   block-size: 500px;

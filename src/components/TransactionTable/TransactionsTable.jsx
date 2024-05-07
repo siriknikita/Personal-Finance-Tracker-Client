@@ -8,7 +8,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import { fetchData } from "../../utils/dataProcessing";
-import styles from "./styles.module.css";
+import styles from "../styles.module.css";
 
 const columnHelper = createColumnHelper();
 
