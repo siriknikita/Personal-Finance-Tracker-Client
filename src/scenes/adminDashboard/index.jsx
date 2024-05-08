@@ -1,22 +1,18 @@
 import React from "react";
 import Header from "../../components/Header";
-import Table from "../../components/Table";
+import BehaviourBarChart from "../../components/behaviourBarChart";
 import styles from "./styles.module.css";
 
 function AdminDashboard() {
   return (
     <>
-      <Header title="Dashboard" subtitle="Welcome to your dashboard" />
+      <Header title="Dashboard" subtitle="Welcome to your admin dashboard" />
       <div className={styles.content}>
         <section className={styles.info_boxes}>
           <div className={styles.info_box}>
             <>
-              <h2>Table of users</h2>
-              <Table
-                fetchUrl={"get/users"}
-                dataKey={"users"}
-                columnsAccessors={["username", "email", "registrationDate"]}
-              />
+              <h2>Users' behaviour</h2>
+              <BehaviourBarChart />
             </>
           </div>
         </section>
