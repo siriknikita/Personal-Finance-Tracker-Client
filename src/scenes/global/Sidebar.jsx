@@ -35,6 +35,7 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const { user } = useContext(UserContext);
+  const isAdmin = user.isAdmin;
 
   return (
     <Box
@@ -118,49 +119,52 @@ const Sidebar = () => {
             >
               Tools
             </Typography>
-            <Item
-              title="Profile Form"
-              to="/profileForm"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Transactions Form"
-              to="/transactionForm"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Goal Form"
-              to="/goalForm"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Tables
-            </Typography>
-            <Item
-              title="Goals"
-              to="/goals"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Transactions"
-              to="/transactions"
-              icon={<TableChartOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            {!isAdmin && (
+              <>
+                <Item
+                  title="Profile Form"
+                  to="/profileForm"
+                  icon={<PersonOutlinedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Item
+                  title="Transactions Form"
+                  to="/transactionForm"
+                  icon={<PersonOutlinedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Item
+                  title="Goal Form"
+                  to="/goalForm"
+                  icon={<PersonOutlinedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Typography
+                  variant="h6"
+                  color={colors.grey[300]}
+                  sx={{ m: "15px 0 5px 20px" }}
+                >
+                  Tables
+                </Typography>
+                <Item
+                  title="Goals"
+                  to="/goals"
+                  icon={<BarChartOutlinedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Item
+                  title="Transactions"
+                  to="/transactions"
+                  icon={<TableChartOutlined />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+              </>
+            )}
           </Box>
         </Menu>
       </ProSidebar>
