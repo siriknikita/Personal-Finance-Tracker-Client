@@ -60,17 +60,21 @@ After deployment, a new bugs were found, reported and fixed according to the rec
 
 ## Future enhancements and features
 
+### HIGH PRIORITY
+
 #### 🕑 Add a changelog option while opening the site
+
+#### 🕑 Enhance website's features for better performance and modern technology usage
+
+#### 🕑 Add an interactive games and score for every user for better UX
+
+### MEDIUM PRIORITY
+
+#### 🕑 Extend to the other platforms
 
 #### 🕑 Integrate Artificial Intelligence technologies for better Users' behaviour analysis
 
 #### 🕑 Integrate mathematical instruments for better financial decisions
-
-#### 🕑 Add an interactive games and score for every user for better UX
-
-#### 🕑 Enhance website's features for better performance and modern technology usage
-
-#### 🕑 Extend to the other platforms
 
 ## Users behavior
 
@@ -206,11 +210,11 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 #### 🕑 Begin work on next phase of development based on user feedback and project roadmap.
 
-#### 🕑 Prioritize features and enhancements for future releases.
+#### ✔️ Prioritize features and enhancements for future releases.
 
-#### 🕑 Conduct planning meetings with development team.
+#### ✔️ Conduct planning meetings with development team.
 
-#### 🕑 Review and update project documentation as needed.
+#### ✔️ Review and update project documentation as needed.
 
 #### 🕑 Enhance security measures and perform security audits.
 
