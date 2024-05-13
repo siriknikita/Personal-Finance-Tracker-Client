@@ -208,7 +208,7 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 ### Week 11:
 
-#### 🕑 Begin work on next phase of development based on user feedback and project roadmap.
+#### ✔️ Begin work on next phase of development based on user feedback and project roadmap.
 
 #### ✔️ Prioritize features and enhancements for future releases.
 
