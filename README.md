@@ -217,7 +217,7 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 #### ✔️ Review and update project documentation as needed.
 
-#### 🕑 Enhance security measures and perform security audits.
+#### ✔️ Enhance security measures and perform security audits.
 
 ### Week 12:
 
