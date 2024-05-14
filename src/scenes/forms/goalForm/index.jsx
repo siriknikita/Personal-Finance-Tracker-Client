@@ -1,27 +1,40 @@
-import React, { useContext, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { z } from "zod";
 import { UserContext } from "../../../App";
 import Header from "../../../components/Header";
 
+const schema = z.object({
+  goal: z.string().min(1).max(100),
+  deadline: z.string().date().min(new Date().toISOString().split("T")[0]),
+});
+
 function GoalForm() {
   const { user } = useContext(UserContext);
-  const [goalDescripiton, setGoalDescription] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
-      await fetch(`/api/set/goal`, {
+      await fetch(`/api/goals/set`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           userID: user.userID,
-          goal: goalDescripiton,
-          deadline: deadline,
+          goal: data.goal,
+          deadline: data.deadline,
         }),
       });
       navigate("/goals");
@@ -29,32 +42,39 @@ function GoalForm() {
     } catch (error) {
       console.error(error);
       toast.error("Failed to add goal!");
+      setError("goal", {
+        message: "Failed to add goal",
+      });
     }
   };
 
   return (
     <>
       <Header title="Add a goal" subtitle="Enter your goal details" />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label>Goal:</label>
         <br />
         <input
+          {...register("goal", {
+            required: "Goal description is required",
+          })}
           type="text"
-          value={goalDescripiton}
-          placeholder="Your goal description"
-          onChange={(e) => setGoalDescription(e.target.value)}
+          placeholder="Your goal description here"
         />
-        <br />
+        {!errors.goal && <br />}
+        {errors.goal && <div>{errors.goal.message}</div>}
         <label>Deadline:</label>
-        <br />
+        {!errors.deadline && <br />}
         <input
+          {...register("deadline", { required: "Deadline is required" })}
           type="date"
-          value={deadline}
           min={new Date().toISOString().split("T")[0]}
-          onChange={(e) => setDeadline(e.target.value)}
         />
-        <br />
-        <button>Submit</button>
+        {!errors.deadline && <br />}
+        {errors.deadline && <div>{errors.deadline.message}</div>}
+        <button disabled={isSubmitting}>
+          {isSubmitting ? "Adding goal..." : "Add goal"}
+        </button>
       </form>
     </>
   );

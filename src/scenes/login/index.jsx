@@ -30,7 +30,7 @@ async function loginUser(email) {
   const passwordHash = extractPasswordFromEmail(email);
   const isAdmin = email === "admin@email.com";
   const response = await fetchData(
-    `login/${email}/${passwordHash}/true/${isAdmin}`
+    `auth/login/${email}/${passwordHash}/true/${isAdmin}`
   );
   return response.user;
 }

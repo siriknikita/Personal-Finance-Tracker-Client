@@ -1,41 +1,50 @@
-import React, { useContext, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { z } from "zod";
 import { UserContext } from "../../../App";
 import Header from "../../../components/Header";
 
+const schema = z.object({
+  amount: z.coerce.number().positive(),
+  categoryID: z.string().min(1),
+});
+
 function TransactionForm() {
   const { user } = useContext(UserContext);
-  const [currentAmount, setCurrentAmount] = useState(0);
-  const [currentCategoryID, setCurrentCategoryID] = useState(1);
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/api/transactions/add`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userID: user.userID,
-            amount: currentAmount,
-            categoryID: currentCategoryID,
-          }),
-        }
-      );
-      if (!response.ok) {
-        console.log(response);
-        toast.error("Failed to add transaction!");
-      }
+      await fetch(`/api/transactions/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userID: user.userID,
+          amount: parseFloat(data.amount),
+          categoryID: data.categoryID,
+        }),
+      });
       navigate("/dashboard");
       toast.success("Transaction added successfully!");
     } catch (error) {
-      console.error("Error adding transaction:", error);
+      console.error(error);
       toast.error("Failed to add transaction!");
+      setError("amount", {
+        message: "Failed to add transaction",
+      });
     }
   };
 
@@ -45,13 +54,14 @@ function TransactionForm() {
         title="Add a transaction"
         subtitle="Enter your transaction details"
       />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {/* Choose a category */}
         <label>
           Choose a category:
           <select
-            value={currentCategoryID}
-            onChange={(e) => setCurrentCategoryID(e.target.value)}
+            {...register("categoryID", {
+              required: "Category is required",
+            })}
           >
             <option value="1">Groceries</option>
             <option value="2">Utilities</option>
@@ -62,20 +72,30 @@ function TransactionForm() {
             <option value="7">Other</option>
           </select>
         </label>
-        <br />
+        {!errors.categoryID && (
+          <>
+            <br />
+          </>
+        )}
+        {errors.categoryID && <div>{errors.categoryID.message}</div>}
         {/* Enter amount of money */}
         <label>
           Enter amount of money ($):
+          <br />
           <input
+            {...register("amount", {
+              required: "Amount is required",
+            })}
             type="number"
             placeholder="Amount"
-            value={currentAmount}
-            onChange={(e) => setCurrentAmount(e.target.value)}
-            required
           />
         </label>
-        <br />
-        <button>Submit</button>
+        {!errors.amount && <br />}
+        {errors.amount && <div>{errors.amount.message}</div>}
+        {/* Submit button */}
+        <button disabled={isSubmitting}>
+          {isSubmitting ? "Adding transaction..." : "Add transaction"}
+        </button>
       </form>
     </>
   );
