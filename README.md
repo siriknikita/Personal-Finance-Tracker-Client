@@ -79,7 +79,8 @@ After deployment, a new bugs were found, reported and fixed according to the rec
 ## Users behavior
 
 The following tendention was noticed while discovering the users behavior on the website:
-![image](https://github.com/siriknikita/Siryk.University.PersonalFinanceTracker-1/assets/115213079/a7bf5fe5-b642-495c-9888-650cf5a3ad42)
+![image](https://github.com/siriknikita/Siryk.University.PersonalFinanceTracker-1/assets/115213079/092ba534-198c-4b63-8d03-28d42106d8de)
+
 As we can see, the biggest spending for the users is on a healthcare, and the next is groceries.
 
 ### Maybe, add more categories to top 3 most popular ones? Let me know in suggestions form (will be added sooner)!
