@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState } from "react";
 import { UserContext } from "../../App";
 import Header from "../../components/Header";
 import PieChartSkeleton from "../../components/PieChartSkeleton";
-import UserBehavior from "../../components/UserBehavior/userBehavior";
 import CategoriesPieChart from "../../components/categoriesPieChart";
 import styles from "./styles.module.css";
 
@@ -20,14 +19,7 @@ function Dashboard() {
           <div className={styles.info_box}>
             <LoadingContet.Provider value={{ setShowPieChart }}>
               {!showPieChart && <PieChartSkeleton />}
-              {user.isAdmin === "false" ? (
-                <CategoriesPieChart userID={user.userID} />
-              ) : (
-                <>
-                  <h2>Users Behavior</h2>
-                  <UserBehavior />
-                </>
-              )}
+              <CategoriesPieChart userID={user.userID} />
             </LoadingContet.Provider>
           </div>
         </section>

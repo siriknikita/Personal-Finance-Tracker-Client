@@ -14,7 +14,7 @@ function TransactionForm() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/api/add/transaction`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/transactions/add`,
         {
           method: "POST",
           headers: {
@@ -46,18 +46,6 @@ function TransactionForm() {
         subtitle="Enter your transaction details"
       />
       <form onSubmit={handleSubmit}>
-        {/* Enter amount of money */}
-        <label>
-          Enter amount of money ($):
-          <input
-            type="number"
-            placeholder="Amount"
-            value={currentAmount}
-            onChange={(e) => setCurrentAmount(e.target.value)}
-            required
-          />
-        </label>
-        <br />
         {/* Choose a category */}
         <label>
           Choose a category:
@@ -75,6 +63,17 @@ function TransactionForm() {
           </select>
         </label>
         <br />
+        {/* Enter amount of money */}
+        <label>
+          Enter amount of money ($):
+          <input
+            type="number"
+            placeholder="Amount"
+            value={currentAmount}
+            onChange={(e) => setCurrentAmount(e.target.value)}
+            required
+          />
+        </label>
         <br />
         <button>Submit</button>
       </form>

@@ -26,15 +26,20 @@ const columns = [
 function TransactionsTable() {
   const { user } = useContext(UserContext);
   const [transactions, setTransactions] = useState([]);
-  const categories = fetchData(`get/transactions/categories/${user.userID}`);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     async function fetchTransactions() {
-      const data = await fetchData(
-        `get/transactions/${user.userID}`,
+      const fetchedTransactionsData = await fetchData(
+        `transactions/get/${user.userID}`,
         "transactions"
       );
-      setTransactions(data);
+      const fetchedCategories = await fetchData(
+        `transactions/get/categories/${user.userID}`,
+        "categories"
+      );
+      setTransactions(fetchedTransactionsData);
+      setCategories(fetchedCategories);
     }
 
     fetchTransactions();
@@ -68,7 +73,7 @@ function TransactionsTable() {
           <tbody>
             {transactions?.map((transaction, index) => (
               <tr key={transaction?.id}>
-                <td>{transaction?.id}</td>
+                {console.log(categories)}
                 <td>{categories[index]}</td>
                 <td>{transaction?.amount}</td>
               </tr>

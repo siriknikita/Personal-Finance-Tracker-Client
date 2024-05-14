@@ -12,7 +12,7 @@ export function formatMoneySpentData(data) {
 
 export async function getMoneySpent(userID) {
   return await fetchData(
-    `get/transactions/moneySpentOnEachCategory/${userID}`,
+    `transactions/get/moneySpent/categories/${userID}`,
     "data"
   );
 }

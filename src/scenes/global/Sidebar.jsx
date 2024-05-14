@@ -119,7 +119,7 @@ const Sidebar = () => {
             >
               Tools
             </Typography>
-            {!isAdmin && (
+            {isAdmin === "false" && (
               <>
                 <Item
                   title="Profile Form"

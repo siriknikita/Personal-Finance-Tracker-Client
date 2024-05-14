@@ -67,13 +67,9 @@ function App() {
                           path="/goals"
                           element={
                             <Table
-                              fetchUrl={`get/goals/${user.userID}`}
+                              fetchUrl={`goals/get/${user.userID}`}
                               dataKey={"goals"}
-                              columnsAccessors={[
-                                "userID",
-                                "description",
-                                "deadline",
-                              ]}
+                              columnsAccessors={["description", "deadline"]}
                             />
                           }
                         />

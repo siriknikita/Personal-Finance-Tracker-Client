@@ -70,7 +70,7 @@ function Login() {
     try {
       const isAdmin = email === "admin@email.com";
       const response = await fetchData(
-        `login/${email}/${passwordHash}/true/${isAdmin}`
+        `auth/login/${email}/${passwordHash}/true/${isAdmin}`
       );
       setUser(response.user);
       setIsAuthorized(true);

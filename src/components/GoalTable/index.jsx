@@ -24,7 +24,7 @@ function GoalTable() {
 
   useEffect(() => {
     async function fetchGoals() {
-      const data = await fetchData(`get/goals/${user.userID}`);
+      const data = await fetchData(`goals/get/${user.userID}`);
       setGoals(data.goals);
     }
     fetchGoals();
