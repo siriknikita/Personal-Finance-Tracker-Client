@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -50,6 +51,9 @@ function GoalForm() {
 
   return (
     <>
+      <Helmet>
+        <title>Goal Form</title>
+      </Helmet>
       <Header title="Add a goal" subtitle="Enter your goal details" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Goal:</label>

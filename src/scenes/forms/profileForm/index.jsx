@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
@@ -71,6 +72,9 @@ function ProfileForm() {
 
   return (
     <>
+      <Helmet>
+        <title>Profile Form</title>
+      </Helmet>
       <Header title="Profile Form" subtitle="Update your profile" />
       <label>
         Choose a data:

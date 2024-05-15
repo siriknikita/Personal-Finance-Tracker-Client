@@ -1,6 +1,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { React, useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../App";
@@ -90,45 +91,50 @@ function Login() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>Log in Form</h1>
-      <div className={styles.form_container}>
-        <div className={styles.left}>
-          <img className={styles.img} src="./images/login.jpg" alt="login" />
-        </div>
-        <div className={styles.right}>
-          <h2 className={styles.from_heading}>Members Log in</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              className={styles.input}
-              placeholder="Password"
-              value={passwordHash}
-              onChange={(e) => setPasswordHash(e.target.value)}
-              required
-            />
-            <br />
-            <button className={styles.btn}>Log In</button>
-          </form>
-          <p className={styles.text}>or</p>
-          <button className={styles.google_btn} onClick={googleLogin}>
-            <img src="./images/google.png" alt="google icon" />
-            <span>Sing in with Google</span>
-          </button>
-          <p className={styles.text}>
-            New Here ? <Link to="/signup">Sing Up</Link>
-          </p>
+    <>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
+      <div className={styles.container}>
+        <h1 className={styles.heading}>Log in Form</h1>
+        <div className={styles.form_container}>
+          <div className={styles.left}>
+            <img className={styles.img} src="./images/login.jpg" alt="login" />
+          </div>
+          <div className={styles.right}>
+            <h2 className={styles.from_heading}>Members Log in</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                className={styles.input}
+                placeholder="Password"
+                value={passwordHash}
+                onChange={(e) => setPasswordHash(e.target.value)}
+                required
+              />
+              <br />
+              <button className={styles.btn}>Log In</button>
+            </form>
+            <p className={styles.text}>or</p>
+            <button className={styles.google_btn} onClick={googleLogin}>
+              <img src="./images/google.png" alt="google icon" />
+              <span>Sing in with Google</span>
+            </button>
+            <p className={styles.text}>
+              New Here ? <Link to="/signup">Sing Up</Link>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

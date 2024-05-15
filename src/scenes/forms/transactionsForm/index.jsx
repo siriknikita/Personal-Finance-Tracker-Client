@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -50,6 +51,9 @@ function TransactionForm() {
 
   return (
     <>
+      <Helmet>
+        <title>Add a transaction</title>
+      </Helmet>
       <Header
         title="Add a transaction"
         subtitle="Enter your transaction details"

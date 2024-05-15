@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { UserContext } from "../../App";
 import Header from "../../components/Header";
 import PieChartSkeleton from "../../components/PieChartSkeleton";
@@ -13,6 +14,9 @@ function Dashboard() {
 
   return (
     <>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       <Header title="Dashboard" subtitle="Welcome to your dashboard" />
       <div className={styles.content}>
         <section className={styles.info_boxes}>
