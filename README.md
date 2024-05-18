@@ -221,11 +221,11 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 ### Week 12:
 
-#### 🕑 Continue development of new features or modules.
+#### ✔️ Continue development of new features or modules.
 
 #### 🕑 Conduct regular testing and quality assurance.
 
-#### 🕑 Prepare for future scalability and expansion.
+#### ✔️ Prepare for future scalability and expansion.
 
 #### 🕑 Review and refine development processes.
 
