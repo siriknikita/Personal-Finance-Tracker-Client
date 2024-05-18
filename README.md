@@ -230,3 +230,11 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 #### 🕑 Review and refine development processes.
 
 #### 🕑 Document lessons learned and insights gained from project implementation.
+
+## ANTILAB 2
+
+-   Hulak Mykhailo
+-   [Project Link](https://hulak-university-local-news.vercel.app/)
+
+-   Oleh Tysovskyi
+-   [Project Link](https://tysovskyi-university-monobank-client.vercel.app/)
