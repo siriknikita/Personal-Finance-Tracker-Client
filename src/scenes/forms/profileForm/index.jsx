@@ -1,22 +1,25 @@
-import React, { useContext, useState } from "react";
-import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { UserContext } from "../../../App";
-import Header from "../../../components/Header";
+import React, { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { UserContext } from '../../../App';
+import Header from '../../../components/Header';
+
+// TODO: Prefer using switch statement to endless if-else-if
+// TODO: Move fetching functionality into separate file or folder
 
 // Move fetch function to another file and swap elif to switch
 
 function ProfileForm() {
-  const { user, setUser } = useContext(UserContext);
-  const [currentOption, setCurrentOption] = useState("username");
-  const [currentUsername, setCurrentUsername] = useState("");
-  const [currentEmail, setCurrentEmail] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newUsername, setNewUsername] = useState("");
-  const [newEmail, setNewEmail] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
+    const [currentOption, setCurrentOption] = useState('username');
+    const [currentUsername, setCurrentUsername] = useState('');
+    const [currentEmail, setCurrentEmail] = useState('');
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newUsername, setNewUsername] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const navigate = useNavigate();
 
   // Change update logic with just one func where you can send only one Object and then update new fields on server
   const handleSubmit = async (e) => {
@@ -73,88 +76,88 @@ function ProfileForm() {
     }
   };
 
-  return (
-    <>
-      <Helmet>
-        <title>Profile Form</title>
-      </Helmet>
-      <Header title="Profile Form" subtitle="Update your profile" />
-      <label>
-        Choose a data:
-        <select
-          value={currentOption}
-          onChange={(e) => setCurrentOption(e.target.value)}
-        >
-          <option value="username">username</option>
-          <option value="email">email</option>
-          <option value="password">password</option>
-        </select>
-      </label>
+    return (
+        <>
+            <Helmet>
+                <title>Profile Form</title>
+            </Helmet>
+            <Header title="Profile Form" subtitle="Update your profile" />
+            <label>
+                Choose a data:
+                <select
+                    value={currentOption}
+                    onChange={(e) => setCurrentOption(e.target.value)}
+                >
+                    <option value="username">username</option>
+                    <option value="email">email</option>
+                    <option value="password">password</option>
+                </select>
+            </label>
 
-      <form onSubmit={handleSubmit}>
-        {currentOption === "username" && (
-          <>
-            <input
-              type="text"
-              placeholder="Current Username"
-              value={currentUsername}
-              onChange={(e) => setCurrentUsername(e.target.value)}
-              required
-            />
-            <br />
-            <input
-              type="text"
-              placeholder="New Username"
-              value={newUsername}
-              onChange={(e) => setNewUsername(e.target.value)}
-              required
-            />
-          </>
-        )}
-        {currentOption === "password" && (
-          <>
-            <input
-              type="password"
-              placeholder="Current Password"
-              value={currentPassword}
-              onChange={(e) => setCurrentPassword(e.target.value)}
-              required
-            />
-            <br />
-            <input
-              type="password"
-              placeholder="New Password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              required
-            />
-          </>
-        )}
-        {currentOption === "email" && (
-          <>
-            <input
-              type="email"
-              placeholder="Current Email"
-              value={currentEmail}
-              onChange={(e) => setCurrentEmail(e.target.value)}
-              required
-            />
-            <br />
-            <input
-              type="email"
-              placeholder="New Email"
-              value={newEmail}
-              onChange={(e) => setNewEmail(e.target.value)}
-              required
-            />
-          </>
-        )}
-        <br />
-        <br />
-        <button>Submit</button>
-      </form>
-    </>
-  );
+            <form onSubmit={handleSubmit}>
+                {currentOption === 'username' && (
+                    <>
+                        <input
+                            type="text"
+                            placeholder="Current Username"
+                            value={currentUsername}
+                            onChange={(e) => setCurrentUsername(e.target.value)}
+                            required
+                        />
+                        <br />
+                        <input
+                            type="text"
+                            placeholder="New Username"
+                            value={newUsername}
+                            onChange={(e) => setNewUsername(e.target.value)}
+                            required
+                        />
+                    </>
+                )}
+                {currentOption === 'password' && (
+                    <>
+                        <input
+                            type="password"
+                            placeholder="Current Password"
+                            value={currentPassword}
+                            onChange={(e) => setCurrentPassword(e.target.value)}
+                            required
+                        />
+                        <br />
+                        <input
+                            type="password"
+                            placeholder="New Password"
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)}
+                            required
+                        />
+                    </>
+                )}
+                {currentOption === 'email' && (
+                    <>
+                        <input
+                            type="email"
+                            placeholder="Current Email"
+                            value={currentEmail}
+                            onChange={(e) => setCurrentEmail(e.target.value)}
+                            required
+                        />
+                        <br />
+                        <input
+                            type="email"
+                            placeholder="New Email"
+                            value={newEmail}
+                            onChange={(e) => setNewEmail(e.target.value)}
+                            required
+                        />
+                    </>
+                )}
+                <br />
+                <br />
+                <button>Submit</button>
+            </form>
+        </>
+    );
 }
 
 export default ProfileForm;

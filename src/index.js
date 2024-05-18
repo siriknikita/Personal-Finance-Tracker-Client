@@ -1,11 +1,14 @@
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
 
-// Move provider to App.js and clientId to .env file
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
+// TODO: Remove commented lines
+// TODO: Move provider to App component
+// TODO: Move clientId to .env file to hide sensitive data
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     // <React.StrictMode>
