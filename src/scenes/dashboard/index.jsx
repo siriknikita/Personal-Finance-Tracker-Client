@@ -6,6 +6,8 @@ import PieChartSkeleton from "../../components/PieChartSkeleton";
 import CategoriesPieChart from "../../components/categoriesPieChart";
 import styles from "./styles.module.css";
 
+// Move context to another file
+
 export const LoadingContet = createContext(null);
 
 function Dashboard() {

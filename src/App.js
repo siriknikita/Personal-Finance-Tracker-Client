@@ -21,6 +21,8 @@ import Profile from "./scenes/profile";
 import Signup from "./scenes/signup";
 import { ColorModeContext, useMode } from "./theme";
 
+// Move context to another file
+
 export const UserContext = createContext(null);
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+
+  // Need to move router to another component
 
   return (
     <UserContext.Provider value={{ user, setUser, setIsAuthorized }}>

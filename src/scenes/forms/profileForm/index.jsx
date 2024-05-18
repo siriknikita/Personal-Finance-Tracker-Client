@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../../App";
 import Header from "../../../components/Header";
 
+// Move fetch function to another file and swap elif to switch
+
 function ProfileForm() {
   const { user, setUser } = useContext(UserContext);
   const [currentOption, setCurrentOption] = useState("username");
@@ -16,6 +18,7 @@ function ProfileForm() {
   const [newPassword, setNewPassword] = useState("");
   const navigate = useNavigate();
 
+  // Change update logic with just one func where you can send only one Object and then update new fields on server
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

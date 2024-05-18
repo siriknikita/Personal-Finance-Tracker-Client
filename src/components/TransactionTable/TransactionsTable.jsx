@@ -28,6 +28,8 @@ function TransactionsTable() {
   const [transactions, setTransactions] = useState([]);
   const [categories, setCategories] = useState([]);
 
+  // Do not use fetch func in components and not two in order
+
   useEffect(() => {
     async function fetchTransactions() {
       const fetchedTransactionsData = await fetchData(

@@ -10,6 +10,8 @@ function BehaviourBarChart() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  // Move fetch to another file
+
   useEffect(() => {
     async function fetchFrequencyData() {
       const frequencyDataFetched = await fetchData(

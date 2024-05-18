@@ -8,6 +8,8 @@ import { z } from "zod";
 import { UserContext } from "../../../App";
 import Header from "../../../components/Header";
 
+// Move fetch function to separate file
+
 const schema = z.object({
   goal: z.string().min(1).max(100),
   deadline: z.string().date().min(new Date().toISOString().split("T")[0]),
