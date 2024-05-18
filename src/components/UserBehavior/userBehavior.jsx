@@ -21,6 +21,8 @@ const UserBehavior = () => {
   const categoriesNames = Object.keys(moneySpentData);
   const moneySpentOnCategories = Object.values(moneySpentData);
 
+  // Move this object creation separately
+
   const data = {
     series: moneySpentOnCategories,
     options: {

@@ -6,6 +6,7 @@ import PieChartSkeleton from '../../components/PieChartSkeleton';
 import CategoriesPieChart from '../../components/categoriesPieChart';
 import styles from './styles.module.css';
 
+// Move context to another file
 // TODO: Move context and associated stuff into separate component to avoid circular dependency
 export const LoadingContet = createContext(null);
 

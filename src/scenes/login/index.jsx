@@ -8,6 +8,8 @@ import { UserContext } from "../../App";
 import { extractPasswordFromEmail } from "../../utils/auth";
 import styles from "./styles.module.css";
 
+// Move fetch functions to separate file
+
 async function fetchData(url) {
   const response = await fetch(
     `${process.env.REACT_APP_API_BASE_URL}/api/${url}`,

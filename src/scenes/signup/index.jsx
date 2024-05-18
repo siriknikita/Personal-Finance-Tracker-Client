@@ -8,6 +8,8 @@ import { UserContext } from "../../App";
 import { extractPasswordFromEmail } from "../../utils/auth";
 import styles from "./styles.module.css";
 
+// Move fetch function to another file
+
 async function fetchData(url) {
   const response = await fetch(
     `${process.env.REACT_APP_API_BASE_URL}/api/${url}`,
@@ -65,6 +67,8 @@ function Signup() {
       }
     },
   });
+
+  // Do not give password hash in fetch data
 
   const handleSubmit = async (e) => {
     e.preventDefault();

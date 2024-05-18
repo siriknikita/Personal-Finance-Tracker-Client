@@ -11,6 +11,8 @@ import Header from '../../../components/Header';
 // TODO: Move fetching functionality into separate file or folder
 // TODO: Create a separate component to encapsulate form field (label, error and so on)
 
+// Move fetch function to separate file
+
 const schema = z.object({
     goal: z.string().min(1).max(100),
     deadline: z.string().date().min(new Date().toISOString().split('T')[0]),

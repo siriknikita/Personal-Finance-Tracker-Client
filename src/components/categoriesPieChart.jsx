@@ -24,6 +24,8 @@ function CategoriesPieChart({ userID }) {
   const categoriesNames = Object.keys(moneySpentData);
   const moneySpentOnCategories = Object.values(moneySpentData);
 
+  // Create Object separately
+
   const data = {
     series: moneySpentOnCategories,
     options: {

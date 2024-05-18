@@ -8,6 +8,8 @@ import { z } from "zod";
 import { UserContext } from "../../../App";
 import Header from "../../../components/Header";
 
+// The same like in profileForm
+
 const schema = z.object({
   amount: z.coerce.number().positive(),
   categoryID: z.string().min(1),

@@ -8,6 +8,8 @@ import Header from '../../../components/Header';
 // TODO: Prefer using switch statement to endless if-else-if
 // TODO: Move fetching functionality into separate file or folder
 
+// Move fetch function to another file and swap elif to switch
+
 function ProfileForm() {
     const { user, setUser } = useContext(UserContext);
     const [currentOption, setCurrentOption] = useState('username');
@@ -19,60 +21,60 @@ function ProfileForm() {
     const [newPassword, setNewPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            if (currentOption === 'username') {
-                await fetch(
-                    `${process.env.REACT_APP_API_BASE_URL}/api/update/username`,
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            email: user.email,
-                            currentUsername: currentUsername,
-                            newUsername: newUsername,
-                        }),
-                    }
-                );
-                setUser({ ...user, username: newUsername });
-                navigate('/dashboard');
-            } else if (currentOption === 'email') {
-                await fetch('/api/update/email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: user.email,
-                        newEmail: newEmail,
-                    }),
-                });
-                setUser({ ...user, email: newEmail });
-                navigate('/dashboard');
-            } else if (currentOption === 'password') {
-                await fetch('/api/update/password', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: user.email,
-                        newPasswordHash: newPassword,
-                    }),
-                });
-                setUser({ ...user, passwordHash: newPassword });
-                navigate('/dashboard');
-            }
-            toast.success('Profile updated successfully!');
-        } catch (error) {
-            console.error('Error updating profile:', error);
-            toast.error('Failed to update profile!');
-        }
-    };
+  // Change update logic with just one func where you can send only one Object and then update new fields on server
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (currentOption === "username") {
+        await fetch(
+          `${process.env.REACT_APP_API_BASE_URL}/api/update/username`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: user.email,
+              currentUsername: currentUsername,
+              newUsername: newUsername,
+            }),
+          }
+        );
+        setUser({ ...user, username: newUsername });
+        navigate("/dashboard");
+      } else if (currentOption === "email") {
+        await fetch("/api/update/email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user.email,
+            newEmail: newEmail,
+          }),
+        });
+        setUser({ ...user, email: newEmail });
+        navigate("/dashboard");
+      } else if (currentOption === "password") {
+        await fetch("/api/update/password", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user.email,
+            newPasswordHash: newPassword,
+          }),
+        });
+        setUser({ ...user, passwordHash: newPassword });
+        navigate("/dashboard");
+      }
+      toast.success("Profile updated successfully!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast.error("Failed to update profile!");
+    }
+  };
 
     return (
         <>
