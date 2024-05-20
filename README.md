@@ -223,13 +223,15 @@ As we can see, the biggest spending for the users is on a healthcare, and the ne
 
 #### ✔️ Continue development of new features or modules.
 
-#### 🕑 Conduct regular testing and quality assurance.
+#### ✔️ Conduct regular testing and quality assurance.
 
 #### ✔️ Prepare for future scalability and expansion.
 
 #### ✔️ Review and refine development processes.
 
 #### 🕑 Document lessons learned and insights gained from project implementation.
+
+
 
 ## ANTILAB 2
 
