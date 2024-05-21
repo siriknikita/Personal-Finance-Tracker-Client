@@ -1,25 +1,26 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import React, { createContext, useState } from 'react';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import React, { createContext, useState } from "react";
 import {
-    Navigate,
-    Route,
-    BrowserRouter as Router,
-    Routes,
-} from 'react-router-dom';
-import Notification from './components/Notification';
-import Table from './components/Table';
-import TransactionsTable from './components/TransactionTable/TransactionsTable';
-import AdminDashboard from './scenes/adminDashboard';
-import Dashboard from './scenes/dashboard';
-import GoalForm from './scenes/forms/goalForm';
-import ProfileForm from './scenes/forms/profileForm';
-import TransactionForm from './scenes/forms/transactionsForm';
-import Sidebar from './scenes/global/Sidebar';
-import Topbar from './scenes/global/Topbar';
-import Login from './scenes/login';
-import Profile from './scenes/profile';
-import Signup from './scenes/signup';
-import { ColorModeContext, useMode } from './theme';
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
+import Notification from "./components/Notification";
+import Table from "./components/Table";
+import TransactionsTable from "./components/TransactionTable/TransactionsTable";
+import AdminDashboard from "./scenes/adminDashboard";
+import Dashboard from "./scenes/dashboard";
+import GoalForm from "./scenes/forms/goalForm";
+import ProfileForm from "./scenes/forms/profileForm";
+import TransactionForm from "./scenes/forms/transactionsForm";
+import Sidebar from "./scenes/global/Sidebar";
+import Topbar from "./scenes/global/Topbar";
+import Login from "./scenes/login";
+import Profile from "./scenes/profile";
+import Signup from "./scenes/signup";
+import { ColorModeContext, useMode } from "./theme";
 
 // TODO: Move context and associated stuff into separate component to avoid circular dependency
 
@@ -28,16 +29,17 @@ import { ColorModeContext, useMode } from './theme';
 export const UserContext = createContext(null);
 
 function App() {
-    const [user, setUser] = useState(null);
-    const [isAuthorized, setIsAuthorized] = useState(false);
-    const [theme, colorMode] = useMode();
-    const [isSidebar, setIsSidebar] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
 
-    // TODO: Move router into separate  component
-    // Need to move router to another component
+  // TODO: Move router into separate  component
+  // Need to move router to another component
 
-    return (
-      <UserContext.Provider value={{ user, setUser, setIsAuthorized }}>
+  return (
+    <UserContext.Provider value={{ user, setUser, setIsAuthorized }}>
+      <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID}>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -68,7 +70,10 @@ function App() {
                             path="/transactionForm"
                             element={<TransactionForm />}
                           />
-                          <Route path="/profileForm" element={<ProfileForm />} />
+                          <Route
+                            path="/profileForm"
+                            element={<ProfileForm />}
+                          />
                           <Route path="/goalForm" element={<GoalForm />} />
                           <Route
                             path="/goals"
@@ -94,8 +99,9 @@ function App() {
             </Router>
           </ThemeProvider>
         </ColorModeContext.Provider>
-      </UserContext.Provider>
-    );
+      </GoogleOAuthProvider>
+    </UserContext.Provider>
+  );
 }
 
 export default App;
