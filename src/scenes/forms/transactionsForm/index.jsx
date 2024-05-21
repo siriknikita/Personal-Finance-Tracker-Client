@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 import { z } from "zod";
 import { UserContext } from "../../../App";
 import Header from "../../../components/Header";
-
-// The same like in profileForm
+import { sendPostData } from "../../../services/dataProcessing";
 
 const schema = z.object({
   amount: z.coerce.number().positive(),
@@ -29,16 +28,10 @@ function TransactionForm() {
 
   const onSubmit = async (data) => {
     try {
-      await fetch(`/api/transactions/add`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: user.userID,
-          amount: parseFloat(data.amount),
-          categoryID: data.categoryID,
-        }),
+      await sendPostData("/api/transactions/add", {
+        userID: user.userID,
+        amount: data.amount,
+        categoryID: data.categoryID,
       });
       navigate("/dashboard");
       toast.success("Transaction added successfully!");

@@ -5,38 +5,8 @@ import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../App";
-import { extractPasswordFromEmail } from "../../utils/auth";
 import styles from "./styles.module.css";
-
-// Move fetch function to another file
-
-async function fetchData(url) {
-  const response = await fetch(
-    `${process.env.REACT_APP_API_BASE_URL}/api/${url}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-    }
-  );
-  if (!response.ok) {
-    console.log(response);
-    toast.error("Something went wrong! Please try again.");
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return await response.json();
-}
-
-async function registerUser(email) {
-  const passwordHash = extractPasswordFromEmail(email);
-  const username = passwordHash;
-  const response = await fetchData(
-    `signup/${username}/${email}/${passwordHash}`
-  );
-  return response.user;
-}
+import { registerUser } from "../../services/auth";
 
 function Signup() {
   const { setUser, setIsAuthorized } = useContext(UserContext);
@@ -68,14 +38,10 @@ function Signup() {
     },
   });
 
-  // Do not give password hash in fetch data
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetchData(
-        `signup/${username}/${email}/${passwordHash}`
-      );
+      const response = await registerUser(email);
       if (response.ok) {
         setUser(response.user);
         setIsAuthorized(true);

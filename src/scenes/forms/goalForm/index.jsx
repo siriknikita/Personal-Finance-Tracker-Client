@@ -7,11 +7,9 @@ import { toast } from 'react-toastify';
 import { z } from 'zod';
 import { UserContext } from '../../../App';
 import Header from '../../../components/Header';
+import { sendPostData } from '../../../services/dataProcessing';
 
-// TODO: Move fetching functionality into separate file or folder
 // TODO: Create a separate component to encapsulate form field (label, error and so on)
-
-// Move fetch function to separate file
 
 const schema = z.object({
     goal: z.string().min(1).max(100),
@@ -32,16 +30,10 @@ function GoalForm() {
 
     const onSubmit = async (data) => {
         try {
-            await fetch(`/api/goals/set`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userID: user.userID,
-                    goal: data.goal,
-                    deadline: data.deadline,
-                }),
+            await sendPostData('/api/goals/set', {
+                userID: user.userID,
+                goal: data.goal,
+                deadline: data.deadline,
             });
             navigate('/goals');
             toast.success('Goal added successfully!');

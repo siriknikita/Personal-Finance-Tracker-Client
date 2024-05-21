@@ -5,7 +5,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React, { useEffect, useState } from "react";
-import { fetchData } from "../utils/dataProcessing";
+import { fetchData } from "../services/dataProcessing";
 import { formTableColumns } from "../utils/tables";
 import styles from "./styles.module.css";
 

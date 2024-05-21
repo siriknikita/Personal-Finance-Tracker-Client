@@ -1,4 +1,4 @@
-import { fetchData } from "./dataProcessing";
+import { fetchData } from "../services/dataProcessing";
 
 export function formatMoneySpentData(data) {
   const categories = Object.keys(data);

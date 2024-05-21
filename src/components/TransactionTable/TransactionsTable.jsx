@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-table";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
-import { fetchData } from "../../utils/dataProcessing";
+import { fetchData } from "../../services/dataProcessing";
 import styles from "../styles.module.css";
 
 const columnHelper = createColumnHelper();

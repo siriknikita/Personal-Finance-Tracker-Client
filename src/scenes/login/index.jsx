@@ -5,38 +5,8 @@ import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../App";
-import { extractPasswordFromEmail } from "../../utils/auth";
 import styles from "./styles.module.css";
-
-// Move fetch functions to separate file
-
-async function fetchData(url) {
-  const response = await fetch(
-    `${process.env.REACT_APP_API_BASE_URL}/api/${url}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-    }
-  );
-  if (!response.ok) {
-    console.log(response);
-    toast.error("Something went wrong! Please try again.");
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return await response.json();
-}
-
-async function loginUser(email) {
-  const passwordHash = extractPasswordFromEmail(email);
-  const isAdmin = email === "admin@email.com";
-  const response = await fetchData(
-    `auth/login/${email}/${passwordHash}/true/${isAdmin}`
-  );
-  return response.user;
-}
+import { loginUser } from "../../services/auth";
 
 function Login() {
   const { setUser, setIsAuthorized } = useContext(UserContext);
@@ -55,8 +25,8 @@ function Login() {
             },
           }
         );
-        const data = res.data;
-        const user = await loginUser(data.email);
+        const email = res.data.email;
+        const user = await loginUser(email, true);
         setUser(user);
         setIsAuthorized(true);
         navigate("/dashboard");
@@ -72,10 +42,8 @@ function Login() {
     e.preventDefault();
     try {
       const isAdmin = email === "admin@email.com";
-      const response = await fetchData(
-        `auth/login/${email}/${passwordHash}/true/${isAdmin}`
-      );
-      setUser(response.user);
+      const user = await loginUser(email);
+      setUser(user);
       setIsAuthorized(true);
       if (isAdmin) {
         navigate("/adminDashboard");
