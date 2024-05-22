@@ -1,30 +1,28 @@
 ## Siryk.University.PersonalFinanceTracker
 
-This is my project for the personal finance tracking, a good app for tracking your personal finances and reaching new financial goals.
+Welcome to Siryk University’s Personal Finance Tracker, an app designed to help you efficiently track your personal finances and achieve your financial goals.
 
-https://personal-finance-tracker-pft-client.azurewebsites.net
+[Visit the Personal Finance Tracker](https://personal-finance-tracker-pft-client.azurewebsites.net)
 
 ## Feedback
 
-You can leave your feedback on any issues or errors right here: [Feedback Form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
+We value your feedback! Please share any issues or suggestions using our [Feedback Form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
 
 ## Author
 
-Mykyta Siryk
-
-nikitasirik2@gmail.com
-
-https://t.me/trdng2
+Mykyta Siryk  
+Email: nikitasirik2@gmail.com  
+Telegram: [@trdng2](https://t.me/trdng2)
 
 ## Getting Started
 
-### Getting Started with Local Setup for Personal Finance Tracker
+### Local Setup for Personal Finance Tracker
 
-Welcome to Personal Finance Tracker! This guide will walk you through the process of setting up Personal Finance Tracker locally on your computer.
+Follow this guide to set up the Personal Finance Tracker locally on your computer.
 
 #### Prerequisites
 
-Before you begin, ensure you have the following:
+Before starting, make sure you have:
 
 - A Google account
 - A computer with internet access
@@ -32,7 +30,7 @@ Before you begin, ensure you have the following:
 
 #### Steps to Setup Personal Finance Tracker Locally
 
-To setup the Personal Finance Tracker locally, you will need to open up your prefered command line and run the following commands:
+Open your preferred command line interface and run the following commands:
 
 ```sh
 git clone https://github.com/siriknikita/Siryk.University.PersonalFinanceTracker-1.git
@@ -41,45 +39,54 @@ npm i
 npm start
 ```
 
-Congradulations! Now, you are ready to use the application locally!
-Note: you don't need to type the commands yourself. You can just press the icon on commands fields.
+Congratulations! You are now ready to use the application locally.
 
-##### Step 2: Explore Finance Tracker Features
+**Note:** You can click the command fields to copy them directly.
 
-1. Once logged in, click on the gear icon located in the top left corner of the screen.
+#### Step 2: Explore Finance Tracker Features
+
+1. After logging in, click on the gear icon located at the top left corner of the screen.
 2. From the dropdown menu, select "Settings".
-3. Set up as you preffer from proposed settings.
+3. Customize the settings to your preferences.
 
-## Testing an Application
+## Testing the Application
 
-For the purpose of project improvement, an application was deployed and tested on Azure. While testing, a bugs was found and addressed to the [feedback form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
+To enhance the project, the application was deployed and tested on Azure. During testing, bugs were identified and reported through the [feedback form](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing).
 
-## Post-deployment stage
+## Post-Deployment Stage
 
-After deployment, a new bugs were found, reported and fixed according to the recommendations and best practices. Also, UI/UX was also improved: better styling, notificaiton system, and other improvements.
+After deployment, additional bugs were identified and resolved following expert recommendations and industry best practices. Significant enhancements were made to the UI/UX, including improved styling, an efficient notification system, and various other upgrades to enhance overall user experience.
 
-## Future enhancements and features
+## Future Enhancements and Features
 
-### HIGH PRIORITY
+### High Priority
 
-#### 🕑 Add a changelog option while opening the site
+- **🕑 Add a changelog option upon site access.**
+- **🕑 Enhance website features for better performance and modern technology usage.**
+- **🕑 Add interactive games and scoring for users to improve UX.**
 
-#### 🕑 Enhance website's features for better performance and modern technology usage
+### Medium Priority
 
-#### 🕑 Add an interactive games and score for every user for better UX
+- **🕑 Expand to other platforms.**
+- **🕑 Integrate AI technologies for better user behavior analysis.**
+- **🕑 Incorporate mathematical tools for better financial decision-making.**
 
-### MEDIUM PRIORITY
+## User Behavior Analysis
 
-#### 🕑 Extend to the other platforms
+The following trends were observed from user behavior on the website:
 
-#### 🕑 Integrate Artificial Intelligence technologies for better Users' behaviour analysis
+![User Behavior Analysis](https://github.com/siriknikita/Siryk.University.PersonalFinanceTracker-1/assets/115213079/092ba534-198c-4b63-8d03-28d42106d8de)
 
-#### 🕑 Integrate mathematical instruments for better financial decisions
+Many users prioritize health-related expenses, making it the most frequently chosen category. 
 
-## Users behavior
+To address this, we plan to:
 
-The following tendention was noticed while discovering the users behavior on the website:
-![image](https://github.com/siriknikita/Siryk.University.PersonalFinanceTracker-1/assets/115213079/092ba534-198c-4b63-8d03-28d42106d8de)
+- Add more intuitive and engaging content.
+- Enhance the health-related features based on user preferences.
+
+We hope these improvements will further elevate the user experience and effectiveness of the Personal Finance Tracker. Thank you for your support!
+
+This version should provide a more polished and professional feel to your documentation.
 
 ## Project Task Decomposition
 
@@ -165,7 +172,7 @@ The following tendention was noticed while discovering the users behavior on the
 
 #### ✔️ Finalize Readme.md file with comprehensive instructions
 
-#### 🕑 Conduct user acceptance testing (UAT) internally
+#### ✔️ Conduct user acceptance testing (UAT) internally
 
 ### Week 8:
 
@@ -175,7 +182,7 @@ The following tendention was noticed while discovering the users behavior on the
 
 #### ✔️ [Address any deployment-related issues or errors](https://docs.google.com/document/d/1K5PmItaZCPgPM3I89sUCpidnY_o_bC91UvVepshO4PA/edit?usp=sharing)
 
-#### 🕑 Verify CI/CD pipeline for automated deployments.
+#### ✔️ Verify CI/CD pipeline for automated deployments.
 
 #### ✔️ Perform additional testing on Azure environment.
 
@@ -227,7 +234,7 @@ The following tendention was noticed while discovering the users behavior on the
 
 #### ✔️ Document lessons learned and insights gained from project implementation.
 
-# Lessons Learned and Areas for Improvement
+# Lessons Learned and Insights Gained
 
 ## Challenges
 
