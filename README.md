@@ -227,7 +227,45 @@ The following tendention was noticed while discovering the users behavior on the
 
 #### 🕑 Document lessons learned and insights gained from project implementation.
 
+# Lessons Learned and Areas for Improvement
 
+## Challenges
+
+-   **CI/CD Pipeline**: Initial setup and configuration of the CI/CD pipeline faced delays and issues, impacting early deployments.
+-   **Frontend Development**: Encountered significant delays due to complexity in implementing new frontend frameworks and ensuring cross-browser compatibility.
+-   **New Technology Stack**: Adapting to a new technology stack introduced unforeseen integration issues and learning curves.
+-   **Unit Test Coverage**: Achieving the desired unit test coverage was challenging and impacted the timeline.
+
+## Root Cause Analysis
+
+-   **CI/CD Pipeline Issues**:
+    -   **Root Cause**: Lack of prior experience with the specific CI/CD tools.
+    -   **Resolution**: Conducted additional training and consulted documentation and forums.
+-   **Frontend Development Delays**:
+    -   **Root Cause**: Insufficient familiarity with the new frontend frameworks and lack of standardized practices.
+    -   **Resolution**: Implemented training sessions and adopted best practices from the community.
+-   **New Technology Stack Challenges**:
+    -   **Root Cause**: Integration complexities.
+    -   **Resolution**: Allocated more time for learning and experimenting, and sought external expertise when needed.
+-   **Unit Test Coverage**:
+    -   **Root Cause**: Time constraints and underestimated effort.
+    -   **Resolution**: Reallocated resources and extended the timeline slightly to improve coverage.
+
+## Areas for Improvement
+
+-   **Planning**:
+    -   **Improvement 1**: More detailed initial planning for CI/CD pipeline setup.
+    -   **Improvement 2**: Allocate buffer time for unexpected delays in adopting new technologies.
+-   **Execution**:
+    -   **Improvement 1**: Establish clearer milestones and regular check-ins for complex integrations like new technology stack components.
+    -   **Improvement 2**: Begin frontend framework integration early in the development cycle to identify and address issues sooner.
+-   **Communication**:
+    -   **Improvement 2**: Increase documentation and knowledge sharing sessions to ensure all team members are on the same page.
+-   **Risk Management**:
+    -   **Improvement 1**: Identify potential risks earlier and develop mitigation strategies.
+    -   **Improvement 2**: Regular risk assessment meetings to stay proactive.
+-   **Technical Challenges**:
+    -   **Improvement 2**: Regular code reviews and refactoring sessions to maintain code quality and performance.
 
 ## ANTILAB 2
 
