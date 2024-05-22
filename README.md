@@ -225,7 +225,7 @@ The following tendention was noticed while discovering the users behavior on the
 
 #### ✔️ Review and refine development processes.
 
-#### 🕑 Document lessons learned and insights gained from project implementation.
+#### ✔️ Document lessons learned and insights gained from project implementation.
 
 # Lessons Learned and Areas for Improvement
 
