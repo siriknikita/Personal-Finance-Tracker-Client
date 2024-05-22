@@ -1,9 +1,15 @@
 export async function fetchData(url, key) {
   const response = await fetch(
-    `https://personal-finance-tracker-server.azurewebsites.net/api/${url}`
+    `https://personal-finance-tracker-server.azurewebsites.net/api/${url}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache",
+      },
+      mode: "cors",
+    }
   );
   const data = await response.json();
-  console.log("Fetched Data:", data);
   return data[key];
 }
 
@@ -19,6 +25,7 @@ export async function sendPostData(url, data, key) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache",
       },
       mode: "cors",
     }
