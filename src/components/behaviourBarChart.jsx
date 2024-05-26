@@ -15,7 +15,7 @@ function BehaviourBarChart() {
   useEffect(() => {
     async function fetchFrequencyData() {
       const frequencyDataFetched = await fetchData(
-        "/transactions/get/spendings/top5",
+        "transactions/get/spendings/top5",
         "top5Spendings"
       );
       const frequencies = Object.values(frequencyDataFetched);
