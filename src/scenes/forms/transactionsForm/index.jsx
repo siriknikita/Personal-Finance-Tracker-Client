@@ -28,7 +28,7 @@ function TransactionForm() {
 
   const onSubmit = async (data) => {
     try {
-      await sendPostData("/api/transactions/add", {
+      await sendPostData("transactions/add", {
         userID: user.userID,
         amount: data.amount,
         categoryID: data.categoryID,

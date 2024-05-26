@@ -30,7 +30,7 @@ function GoalForm() {
 
     const onSubmit = async (data) => {
         try {
-            await sendPostData('/api/goals/set', {
+            await sendPostData('goals/set', {
                 userID: user.userID,
                 goal: data.goal,
                 deadline: data.deadline,
