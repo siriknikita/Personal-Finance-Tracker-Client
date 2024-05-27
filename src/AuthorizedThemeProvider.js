@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { ColorModeContext } from './theme';
-import { UserContext } from './App';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import React, { useContext } from "react";
+import { UserContext } from "./App";
+import { ColorModeContext } from "./theme";
 
 const AuthorizedThemeProvider = ({ colorMode, theme, children }) => {
   const { isAuthorized } = useContext(UserContext);
 
   if (!isAuthorized) {
-    return <>{children}</>;
+    return children;
   }
 
   return (

@@ -15,10 +15,11 @@ import { UserContext } from "./App";
 const RoutesComponent = () => {
   const { user } = useContext(UserContext);
   const isAuthorized = useContext(UserContext).isAuthorized || localStorage.getItem("isAuthorized") === "true";
+  console.log(isAuthorized);
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Navigate to={isAuthorized ? "/dashboard" : "/login"} />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       {isAuthorized && (

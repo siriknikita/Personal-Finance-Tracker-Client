@@ -21,7 +21,7 @@ const Topbar = () => {
 
     function logout() {
         localStorage.removeItem('user');
-        localStorage.removeItem('isAuthorized');
+        localStorage.setItem('isAuthorized', false);
         setIsAuthorized(false);
         navigate('/');
     }
