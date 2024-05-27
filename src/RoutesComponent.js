@@ -1,25 +1,22 @@
 import React, { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Table from "./components/Table";
-import TransactionsTable from "./components/TransactionTable/TransactionsTable";
-import AdminDashboard from "./scenes/adminDashboard";
-import Dashboard from "./scenes/dashboard";
-import GoalForm from "./scenes/forms/goalForm";
-import ProfileForm from "./scenes/forms/profileForm";
-import TransactionForm from "./scenes/forms/transactionsForm";
-import Login from "./scenes/login";
-import Profile from "./scenes/profile";
-import Signup from "./scenes/signup";
 import { UserContext } from "./App";
+import { Table, TransactionsTable } from "./components";
+import { AdminDashboard, Dashboard, Login, Profile, Signup } from "./scenes";
+import { GoalForm, ProfileForm, TransactionForm } from "./scenes/forms";
 
 const RoutesComponent = () => {
   const { user } = useContext(UserContext);
-  const isAuthorized = useContext(UserContext).isAuthorized || localStorage.getItem("isAuthorized") === "true";
-  console.log(isAuthorized);
+  const isAuthorized =
+    useContext(UserContext).isAuthorized ||
+    localStorage.getItem("isAuthorized") === "true";
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={isAuthorized ? "/dashboard" : "/login"} />} />
+      <Route
+        path="/"
+        element={<Navigate to={isAuthorized ? "/dashboard" : "/login"} />}
+      />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       {isAuthorized && (

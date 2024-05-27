@@ -1,11 +1,10 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import React, { createContext, useEffect, useState } from "react";
+import AuthorizedThemeProvider from "./AuthorizedThemeProvider";
 import RoutesComponent from "./RoutesComponent";
-import Sidebar from "./scenes/global/Sidebar";
-import Topbar from "./scenes/global/Topbar";
-import Notification from "./components/Notification";
+import {Notification} from "./components";
+import { Sidebar, Topbar } from "./scenes/global";
 import { useMode } from "./theme";
-import AuthorizedThemeProvider from "./AuthorizedThemeProvider"; // Import the new component
 
 export const UserContext = createContext(null);
 
@@ -30,7 +29,9 @@ function App() {
   }, [isAuthorized]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, isAuthorized, setIsAuthorized }}>
+    <UserContext.Provider
+      value={{ user, setUser, isAuthorized, setIsAuthorized }}
+    >
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <AuthorizedThemeProvider theme={theme} colorMode={colorMode}>
           <Notification />

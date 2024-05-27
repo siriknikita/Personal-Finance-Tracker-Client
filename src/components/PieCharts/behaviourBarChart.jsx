@@ -1,8 +1,8 @@
 import { useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
-import { fetchData } from "../services/dataProcessing";
-import { tokens } from "../theme";
+import { fetchData } from "../../services/dataProcessing";
+import { tokens } from "../../theme";
 
 function BehaviourBarChart() {
   const [frequencyData, setFrequencyData] = useState([]);
