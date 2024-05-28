@@ -10,6 +10,7 @@ export async function fetchData(url, key) {
       credentials: "include",
     }
   );
+  
   const data = await response.json();
   return data[key];
 }

@@ -75,7 +75,6 @@ function TransactionsTable() {
           <tbody>
             {transactions?.map((transaction, index) => (
               <tr key={transaction?.id}>
-                {console.log(categories)}
                 <td>{categories[index]}</td>
                 <td>{transaction?.amount}</td>
               </tr>

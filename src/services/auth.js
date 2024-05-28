@@ -19,14 +19,14 @@ export async function loginUser(email, passwordHash) {
   return response;
 }
 
-export async function registerUser(email, isGoogle=false) {
-  const passwordHash = extractPasswordFromEmail(email);
-  const username = passwordHash;
+export async function registerUser(username, email, passwordHash, isGoogle=false) {
+  if (isGoogle) return googleLoginUser(email);
   const response = await sendPostData(`auth/register`, {
     username,
     email,
     passwordHash,
     isGoogle,
   }, 'user');
+  console.log(response);
   return response;
 }

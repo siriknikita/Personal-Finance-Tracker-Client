@@ -35,6 +35,7 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const { user } = useContext(UserContext);
+  console.log("User", user);
   const isAdmin = user.isAdmin;
 
   return (

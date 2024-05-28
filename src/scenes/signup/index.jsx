@@ -41,8 +41,8 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await registerUser(email);
-      if (response.ok) {
+      const response = await registerUser(username, email, passwordHash);
+      if (response) {
         setUser(response.user);
         setIsAuthorized(true);
         navigate("/dashboard");
