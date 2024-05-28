@@ -16,7 +16,6 @@ export async function loginUser(email, passwordHash) {
     passwordHash: passwordHash,
     isGoogle: false,
   }, 'user');
-  console.log(response);
   return response;
 }
 

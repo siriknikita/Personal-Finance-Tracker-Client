@@ -17,6 +17,7 @@
         "axios": "^1.6.8",
         "debug": "^4.3.4",
         "dotenv-expand": "^11.0.6",
+        "framer-motion": "^11.2.6",
         "isexe": "^3.1.1",
         "plotly.js": "^1.47.4",
         "plotly.js-dist": "^2.30.1",

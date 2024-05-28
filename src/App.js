@@ -1,12 +1,11 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthorizedThemeProvider from "./AuthorizedThemeProvider";
 import RoutesComponent from "./RoutesComponent";
 import {Notification} from "./components";
 import { Sidebar, Topbar } from "./scenes/global";
 import { useMode } from "./theme";
-
-export const UserContext = createContext(null);
+import { UserContext } from "./contexts";
 
 function App() {
   const [user, setUser] = useState(() => {

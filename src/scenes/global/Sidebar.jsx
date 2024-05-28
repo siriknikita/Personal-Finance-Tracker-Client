@@ -8,7 +8,7 @@ import React, { useContext, useState } from "react";
 import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../App";
+import { UserContext } from "../../contexts";
 import { tokens } from "../../theme";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {

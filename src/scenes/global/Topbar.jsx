@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColorModeContext, tokens } from '../../../src/theme';
-import { UserContext } from '../../App';
+import { UserContext } from '../../contexts';
 import { LogoutOutlined } from '@mui/icons-material';
 
 const Topbar = () => {

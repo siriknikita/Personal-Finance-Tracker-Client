@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useContext } from "react";
-import { UserContext } from "./App";
+import { UserContext } from "./contexts";
 import { ColorModeContext } from "./theme";
 
 const AuthorizedThemeProvider = ({ colorMode, theme, children }) => {

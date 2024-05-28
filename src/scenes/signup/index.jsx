@@ -4,7 +4,7 @@ import { React, useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { UserContext } from "../../App";
+import { UserContext } from "../../contexts";
 import styles from "./styles.module.css";
 import { registerUser } from "../../services/auth";
 
