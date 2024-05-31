@@ -1,4 +1,4 @@
-export async function fetchData(url, key) {
+async function fetchData(url, key) {
   const response = await fetch(
     `/api/${url}`,
     {
@@ -16,7 +16,7 @@ export async function fetchData(url, key) {
   return returnedData[key];
 }
 
-export async function sendPostData(url, data, key) {
+async function sendPostData(url, data, key) {
   const response = await fetch(
     `/api/${url}`,
     {
@@ -34,3 +34,8 @@ export async function sendPostData(url, data, key) {
   const returnedData = await response.json();
   return returnedData[key];
 }
+
+module.exports = {
+  fetchData,
+  sendPostData,
+};
