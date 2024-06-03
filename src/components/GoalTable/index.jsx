@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import {
   flexRender,
   getCoreRowModel,
@@ -8,7 +7,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts";
 import { fetchData } from "../../services/dataProcessing";
 import { formTableColumns } from "../../utils/tables";
-import styles from "../styles.module.css";
 
 function GoalTable() {
   const { user } = useContext(UserContext);
@@ -31,37 +29,35 @@ function GoalTable() {
   }, [user.userID]);
 
   return (
-    <Box>
-      <Box className={styles.container + "content"}>
-        <table>
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th key={header.id}>
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Box>
-    </Box>
+    <div>
+      <table>
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

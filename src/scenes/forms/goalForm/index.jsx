@@ -5,11 +5,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { UserContext } from "../../../contexts";
 import { Header } from "../../../components";
+import { UserContext } from "../../../contexts";
 import { sendPostData } from "../../../services/dataProcessing";
-
-// TODO: Create a separate component to encapsulate form field (label, error and so on)
 
 const schema = z.object({
   goal: z.string().min(1).max(100),
@@ -29,7 +27,9 @@ function GoalForm() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
+      console.log(data);
       await sendPostData("goals/set", {
         userID: user.userID,
         goal: data.goal,
@@ -53,29 +53,42 @@ function GoalForm() {
       </Helmet>
       <Header title="Add a goal" subtitle="Enter your goal details" />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Goal:</label>
-        <br />
-        <input
-          {...register("goal", {
-            required: "Goal description is required",
-          })}
-          type="text"
-          placeholder="Your goal description here"
-        />
-        {!errors.goal && <br />}
-        {errors.goal && <div>{errors.goal.message}</div>}
-        <label>Deadline:</label>
-        {!errors.deadline && <br />}
-        <input
-          {...register("deadline", {
-            required: "Deadline is required",
-          })}
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
-        />
-        {!errors.deadline && <br />}
-        {errors.deadline && <div>{errors.deadline.message}</div>}
-        <button disabled={isSubmitting}>
+        <div className="flex flex-col gap-4">
+          <label className="input input-bordered flex items-center gap-2">
+            Goal
+            <input
+              {...register("goal", {
+                required: "Goal description is required",
+              })}
+              type="text"
+              className="grow"
+              placeholder="Goal Description"
+            />
+          </label>
+          {errors.goal && (
+            <div className="text-red-500">{errors.goal.message}</div>
+          )}
+          <label className="input input-bordered flex items-center gap-2">
+            Deadline
+            <input
+              {...register("deadline", {
+                required: "Deadline is required",
+              })}
+              type="date"
+              min={new Date().toISOString().split("T")[0]}
+              className="grow"
+              defaultValue={new Date().toISOString().split("T")[0]}
+            />
+          </label>
+          {errors.deadline && (
+            <div className="text-red-500">{errors.deadline.message}</div>
+          )}
+        </div>
+        <button
+          disabled={isSubmitting}
+          className="btn btn-neutral mt-4 w-32 max-w-36"
+          type="submit"
+        >
           {isSubmitting ? "Adding goal..." : "Add goal"}
         </button>
       </form>

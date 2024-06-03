@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import {
   flexRender,
   getCoreRowModel,
@@ -7,7 +6,6 @@ import {
 import React, { useEffect, useState } from "react";
 import { fetchData } from "../services/dataProcessing";
 import { formTableColumns } from "../utils/tables";
-import styles from "./styles.module.css";
 
 export default function Table({ fetchUrl, dataKey, columnsAccessors }) {
   const [tableData, setTableData] = useState([]);
@@ -31,7 +29,8 @@ export default function Table({ fetchUrl, dataKey, columnsAccessors }) {
   }, []);
 
   return (
-    <Box className={styles.container + "content"}>
+      <div>
+
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -59,6 +58,6 @@ export default function Table({ fetchUrl, dataKey, columnsAccessors }) {
           ))}
         </tbody>
       </table>
-    </Box>
+      </div>
   );
 }
