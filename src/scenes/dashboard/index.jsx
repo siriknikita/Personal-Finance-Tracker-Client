@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts";
 import { CategoriesPieChart, Header, PieChartSkeleton } from "../../components";
 import styles from "./styles.module.css";
 
-export const LoadingContet = createContext(null);
+export const LoadingContext = createContext(null);
 
 function Dashboard() {
   const { user } = useContext(UserContext);
@@ -19,10 +19,10 @@ function Dashboard() {
       <div className={styles.content}>
         <section className={styles.info_boxes}>
           <div className={styles.info_box}>
-            <LoadingContet.Provider value={{ setShowPieChart }}>
+            <LoadingContext.Provider value={{ setShowPieChart }}>
               {!showPieChart && <PieChartSkeleton />}
               <CategoriesPieChart userID={user.userID} />
-            </LoadingContet.Provider>
+            </LoadingContext.Provider>
           </div>
         </section>
       </div>
