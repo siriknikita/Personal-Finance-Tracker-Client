@@ -27,7 +27,6 @@ function GoalForm() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       console.log(data);
       await sendPostData("goals/set", {
@@ -45,6 +44,12 @@ function GoalForm() {
       });
     }
   };
+
+  if (errors) {
+    for (const error in errors) {
+      toast.error(errors[error].message);
+    }
+  }
 
   return (
     <>
@@ -65,9 +70,6 @@ function GoalForm() {
               placeholder="Goal Description"
             />
           </label>
-          {errors.goal && (
-            <div className="text-red-500">{errors.goal.message}</div>
-          )}
           <label className="input input-bordered flex items-center gap-2">
             Deadline
             <input
@@ -80,9 +82,6 @@ function GoalForm() {
               defaultValue={new Date().toISOString().split("T")[0]}
             />
           </label>
-          {errors.deadline && (
-            <div className="text-red-500">{errors.deadline.message}</div>
-          )}
         </div>
         <button
           disabled={isSubmitting}
