@@ -1,8 +1,4 @@
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts";
 import { fetchData } from "../../services/dataProcessing";
@@ -29,35 +25,71 @@ function GoalTable() {
   }, [user.userID]);
 
   return (
-    <div>
-      <table>
+    <div className="overflow-x-auto">
+      <table className="table">
+        {/* head */}
         <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Favorite Color</th>
+          </tr>
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {/* row 1 */}
+          <tr>
+            <th>1</th>
+            <td>Cy Ganderton</td>
+            <td>Quality Control Specialist</td>
+            <td>Blue</td>
+          </tr>
+          {/* row 2 */}
+          <tr className="hover">
+            <th>2</th>
+            <td>Hart Hagerty</td>
+            <td>Desktop Support Technician</td>
+            <td>Purple</td>
+          </tr>
+          {/* row 3 */}
+          <tr>
+            <th>3</th>
+            <td>Brice Swyre</td>
+            <td>Tax Accountant</td>
+            <td>Red</td>
+          </tr>
         </tbody>
       </table>
     </div>
+    // <div>
+    //   <table>
+    //     <thead>
+    //       {table.getHeaderGroups().map((headerGroup) => (
+    //         <tr key={headerGroup.id}>
+    //           {headerGroup.headers.map((header) => (
+    //             <th key={header.id}>
+    //               {flexRender(
+    //                 header.column.columnDef.header,
+    //                 header.getContext()
+    //               )}
+    //             </th>
+    //           ))}
+    //         </tr>
+    //       ))}
+    //     </thead>
+    //     <tbody>
+    //       {table.getRowModel().rows.map((row) => (
+    //         <tr key={row.id}>
+    //           {row.getVisibleCells().map((cell) => (
+    //             <td key={cell.id}>
+    //               {flexRender(cell.column.columnDef.cell, cell.getContext())}
+    //             </td>
+    //           ))}
+    //         </tr>
+    //       ))}
+    //     </tbody>
+    //   </table>
+    // </div>
   );
 }
 
