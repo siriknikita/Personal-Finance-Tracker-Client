@@ -40,6 +40,7 @@ function Login() {
         console.log("res:", res);
         const email = res.data.email;
         const user = await googleLoginUser(email);
+        console.log("User:", user);
         setUser(user);
         setIsAuthorized(true);
         navigate("/dashboard");
