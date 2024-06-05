@@ -4,15 +4,10 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { z } from "zod";
 import { Header } from "../../../components";
 import { UserContext } from "../../../contexts";
 import { sendPostData } from "../../../services/dataProcessing";
-
-const schema = z.object({
-  goal: z.string().min(1).max(100),
-  deadline: z.string().date().min(new Date().toISOString().split("T")[0]),
-});
+import { goalSchema } from "../schemas";
 
 function GoalForm() {
   const { user } = useContext(UserContext);
@@ -22,7 +17,7 @@ function GoalForm() {
     setError,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(goalSchema),
   });
   const navigate = useNavigate();
 

@@ -4,18 +4,11 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { z } from "zod";
 import { Header } from "../../../components";
 import { UserContext } from "../../../contexts";
 import { fetchData } from "../../../services/dataProcessing";
 import { updateUser } from "../../../utils/user";
-
-const schema = z.object({
-  email: z.string().email(),
-  newUsername: z.string().min(3).max(20),
-  newPassword: z.string().optional(),
-  confirmedNewPassword: z.string().optional(),
-});
+import { profileSchema } from "../schemas";
 
 function ProfileForm() {
   const { user, setUser } = useContext(UserContext);
@@ -25,7 +18,7 @@ function ProfileForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(profileSchema),
   });
 
   const onSubmit = async (data) => {
@@ -129,13 +122,13 @@ function ProfileForm() {
               />
             </label>
           </div>
-        <button
-          disabled={isSubmitting}
-          className="btn btn-neutral w-32 max-w-36"
-          type="submit"
-        >
-          {isSubmitting ? "Updating profile..." : "Update profile"}
-        </button>
+          <button
+            disabled={isSubmitting}
+            className="btn btn-neutral w-32 max-w-36"
+            type="submit"
+          >
+            {isSubmitting ? "Updating profile..." : "Update profile"}
+          </button>
         </div>
       </form>
     </>

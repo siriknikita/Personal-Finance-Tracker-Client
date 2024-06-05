@@ -4,15 +4,10 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { z } from "zod";
 import { Header } from "../../../components";
 import { UserContext } from "../../../contexts";
 import { fetchData, sendPostData } from "../../../services/dataProcessing";
-
-const schema = z.object({
-  amount: z.coerce.number().positive(),
-  categoryID: z.string().min(1),
-});
+import { transactionSchema } from "../schemas";
 
 function TransactionForm() {
   const { user } = useContext(UserContext);
@@ -22,7 +17,7 @@ function TransactionForm() {
     setError,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(transactionSchema),
   });
   const navigate = useNavigate();
 
