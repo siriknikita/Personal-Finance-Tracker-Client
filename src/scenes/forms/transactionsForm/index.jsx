@@ -1,13 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { UserContext } from "../../../contexts";
 import { Header } from "../../../components";
-import { sendPostData } from "../../../services/dataProcessing";
+import { UserContext } from "../../../contexts";
+import { fetchData, sendPostData } from "../../../services/dataProcessing";
 
 const schema = z.object({
   amount: z.coerce.number().positive(),
@@ -26,8 +26,24 @@ function TransactionForm() {
   });
   const navigate = useNavigate();
 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const responseData = await fetchData("categories/get", "categories");
+      setCategories(responseData);
+    };
+    fetchCategories();
+  }, []);
+
   const onSubmit = async (data) => {
     try {
+      if (data.categoryID === "Choose a category") {
+        setError("categoryID", {
+          message: "Category is required",
+        });
+        return;
+      }
       await sendPostData("transactions/add", {
         userID: user.userID,
         amount: data.amount,
@@ -44,6 +60,12 @@ function TransactionForm() {
     }
   };
 
+  if (errors) {
+    for (const error in errors) {
+      toast.error(errors[error].message);
+    }
+  }
+
   return (
     <>
       <Helmet>
@@ -54,47 +76,45 @@ function TransactionForm() {
         subtitle="Enter your transaction details"
       />
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Choose a category */}
-        <label>
-          Choose a category:
+        <div className="flex flex-col gap-4">
+          {/* Choose a category */}
           <select
             {...register("categoryID", {
               required: "Category is required",
             })}
+            className="select select-bordered w-full max-w-xs ml-2"
           >
-            <option value="1">Groceries</option>
-            <option value="2">Utilities</option>
-            <option value="3">Rent</option>
-            <option value="4">Entertainment</option>
-            <option value="5">Healthcare</option>
-            <option value="6">Transportation</option>
-            <option value="7">Other</option>
+            <option disabled selected>
+              Choose a category
+            </option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
-        </label>
-        {!errors.categoryID && (
-          <>
-            <br />
-          </>
-        )}
-        {errors.categoryID && <div>{errors.categoryID.message}</div>}
-        {/* Enter amount of money */}
-        <label>
-          Enter amount of money ($):
-          <br />
-          <input
-            {...register("amount", {
-              required: "Amount is required",
-            })}
-            type="number"
-            placeholder="Amount"
-          />
-        </label>
-        {!errors.amount && <br />}
-        {errors.amount && <div>{errors.amount.message}</div>}
-        {/* Submit button */}
-        <button disabled={isSubmitting}>
-          {isSubmitting ? "Adding transaction..." : "Add transaction"}
-        </button>
+          {/* Amount */}
+          <label className="input input-bordered flex items-center gap-2 shrink">
+            Enter amount of money ($):
+            <input
+              {...register("amount", {
+                required: "Amount is required",
+              })}
+              type="number"
+              className="m-1"
+              placeholder="Amount"
+              disabled={isSubmitting}
+            />
+          </label>
+          {/* Submit button */}
+          <button
+            disabled={isSubmitting}
+            className="btn btn-neutral w-32 max-w-36"
+            type="submit"
+          >
+            {isSubmitting ? "Adding transaction..." : "Add transaction"}
+          </button>
+        </div>
       </form>
     </>
   );
