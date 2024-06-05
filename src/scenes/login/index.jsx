@@ -106,7 +106,7 @@ function Login() {
           {/* Login form */}
           <div className="flex-[1.5] flex flex-col items-center justify-center">
             {/* Form title */}
-            <h2 className="text-2xl font-normal text-[#2c444e] mb-8">
+            <h2 className="text-2xl font-normal text-[#2c444e] mb-4">
               Members Log in
             </h2>
             {/* Form */}
@@ -150,7 +150,7 @@ function Login() {
                   />
                 </label>
               </div>
-              <div className="flex flex-row items-center">
+              <div className="flex flex-row items-center justify-center">
                 {/* Submit button */}
                 <button
                   disabled={isSubmitting}
@@ -163,10 +163,10 @@ function Login() {
                 </button>
               </div>
             </form>
-            <p className="text-sm text-[#2c444e] mt-4">or</p>
+            <p className="text-sm text-[#2c444e] mt-2">or</p>
             <button
               disabled={isSubmitting}
-              className={`w-[230px] h-10 rounded-md bg-white shadow-md font-medium text-lg text-[#2c444e] cursor-pointer flex items-center justify-center mt-4 ${
+              className={`w-[230px] h-10 rounded-md bg-white shadow-md font-medium text-lg text-[#2c444e] cursor-pointer flex items-center justify-center mt-2 ${
                 isSubmitting
                   ? "cursor-not-allowed btn-disabled"
                   : "cursor-pointer"

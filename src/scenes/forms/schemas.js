@@ -21,3 +21,9 @@ export const loginSchema = z.object({
   email: z.string().email(),
   passwordHash: z.string().min(8),
 });
+
+export const signupSchema = z.object({
+  username: z.string().min(3),
+  email: z.string().email(),
+  passwordHash: z.string().min(8),
+});
