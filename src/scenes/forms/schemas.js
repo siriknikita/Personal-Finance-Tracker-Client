@@ -16,3 +16,8 @@ export const goalSchema = z.object({
   goal: z.string().min(1).max(100),
   deadline: z.string().date().min(new Date().toISOString().split("T")[0]),
 });
+
+export const loginSchema = z.object({
+  email: z.string().email(),
+  passwordHash: z.string().min(8),
+});
