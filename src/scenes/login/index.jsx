@@ -146,7 +146,7 @@ function Login() {
                     })}
                     type="password"
                     className="grow"
-                    value="password"
+                    placeholder="Password"
                   />
                 </label>
               </div>

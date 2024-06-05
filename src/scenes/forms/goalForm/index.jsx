@@ -81,7 +81,7 @@ function GoalForm() {
           </div>
           <button
             disabled={isSubmitting}
-            className="btn btn-neutral w-32 max-w-36 m-"
+            className="btn btn-neutral w-32 max-w-36"
             type="submit"
           >
             {isSubmitting ? "Adding goal..." : "Add goal"}
