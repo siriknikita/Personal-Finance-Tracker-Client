@@ -37,6 +37,7 @@ function Login() {
             },
           }
         );
+        console.log("res:", res);
         const email = res.data.email;
         const user = await googleLoginUser(email);
         setUser(user);
