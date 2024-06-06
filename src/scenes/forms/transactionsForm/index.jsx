@@ -70,44 +70,49 @@ function TransactionForm() {
         title="Add a transaction"
         subtitle="Enter your transaction details"
       />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-4">
-          {/* Choose a category */}
-          <select
-            {...register("categoryID", {
-              required: "Category is required",
-            })}
-            className="select select-bordered w-full max-w-xs ml-2"
-          >
-            <option disabled selected>
-              Choose a category
-            </option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-          {/* Amount */}
-          <label className="input input-bordered flex items-center gap-2 shrink">
-            Enter amount of money ($):
-            <input
-              {...register("amount", {
-                required: "Amount is required",
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col p-4 items-center justify-center"
+      >
+        <div className="flex flex-col w-[70%] items-center">
+          <div className="grow w-[100%] flex flex-col items-center ">
+            {/* Choose a category */}
+            <select
+              {...register("categoryID", {
+                required: "Category is required",
               })}
-              type="number"
-              className="m-1"
-              placeholder="Amount"
-              disabled={isSubmitting}
-            />
-          </label>
+              className="select select-bordered w-full max-w-md ml-4 grow flex gap-2 "
+            >
+              <option disabled selected>
+                Choose a category
+              </option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+            {/* Amount */}
+            <label className="input input-bordered w-[102%] flex items-center gap-2 m-4 mr-1 max-w-md">
+              Enter amount of money ($):
+              <input
+                {...register("amount", {
+                  required: "Amount is required",
+                })}
+                type="number"
+                className="grow"
+                placeholder="Amount"
+                disabled={isSubmitting}
+              />
+            </label>
+          </div>
           {/* Submit button */}
           <button
             disabled={isSubmitting}
             className="btn btn-neutral w-32 max-w-36"
             type="submit"
           >
-            {isSubmitting ? "Adding transaction..." : "Add transaction"}
+            {isSubmitting ? "Adding Transaction..." : "Add Transaction"}
           </button>
         </div>
       </form>
