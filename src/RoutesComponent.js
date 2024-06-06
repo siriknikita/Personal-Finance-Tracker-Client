@@ -15,7 +15,7 @@ const RoutesComponent = () => {
     <Routes>
       <Route
         path="/"
-        element={<Navigate to={isAuthorized ? "/dashboard" : "/login"} />}
+        element={<Navigate to={isAuthorized ? "/dashboard" : "/signup"} />}
       />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
