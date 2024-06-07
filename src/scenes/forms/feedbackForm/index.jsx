@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
@@ -28,10 +27,16 @@ function FeedbackForm() {
     }
 
     try {
-      const message = await sendPostData("email/feedback", {
-        feedback: data.feedback,
-        userEmail: user.email,
-      }, "message");
+      const message = await sendPostData(
+        "email/feedback",
+        {
+          feedback: data.feedback,
+          userEmail: user.email,
+          hasPhoto: data.photoData && data.photoData[0] ? true : false,
+          filename: selectedFile?.name,
+        },
+        "message"
+      );
       console.log("message", message);
       toast.success("Feedback sent successfully!");
       navigate("/dashboard");
@@ -49,10 +54,14 @@ function FeedbackForm() {
         reader.onloadend = async () => {
           const base64File = reader.result.split(",")[1];
 
-          await sendPostData("blob/upload/screenshot", {
-            base64File,
-            filename: selectedFile.name,
-          }, "message");
+          await sendPostData(
+            "blob/upload/screenshot",
+            {
+              base64File,
+              filename: selectedFile.name,
+            },
+            "message"
+          );
         };
       } catch (error) {
         console.error(error);
