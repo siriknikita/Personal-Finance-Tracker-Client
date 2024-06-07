@@ -29,5 +29,6 @@ export const signupSchema = z.object({
 });
 
 export const feedbackSchema = z.object({
-  feedback: z.string().min(1),
+  feedback: z.string(),
+  photoData: z.instanceof(FileList).optional(),
 });
