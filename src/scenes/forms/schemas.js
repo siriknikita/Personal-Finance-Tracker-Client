@@ -27,3 +27,7 @@ export const signupSchema = z.object({
   email: z.string().email(),
   passwordHash: z.string().min(8),
 });
+
+export const feedbackSchema = z.object({
+  feedback: z.string().min(1),
+});
