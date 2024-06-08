@@ -34,16 +34,14 @@ function Login() {
             },
           }
         );
-        console.log("res:", res);
-        const email = res.data.email;
-        const user = await googleLoginUser(email);
-        console.log("User:", user);
+        const user = await googleLoginUser(res.data.email);
+
         setUser(user);
         setIsAuthorized(true);
         navigate("/dashboard");
         toast.success("Logged in via Google successfully!");
       } catch (err) {
-        console.error(`[LOGIN] Error logging in via Google: ${err}`);
+        console.error(`Error logging in via Google: ${err}`);
         toast.error("Error logging in via Google!");
       }
     },
@@ -52,8 +50,9 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const { email, passwordHash } = data;
-      const isAdmin = email === "admin@email.com";
+      const isAdmin = email === process.env.REACT_APP_ADMIN_EMAIL;
       const user = await loginUser(email, passwordHash);
+
       setUser(user);
       setIsAuthorized(true);
       if (isAdmin) {
